@@ -13,6 +13,7 @@ import { AppService } from './app.service';
 
 
 import { AboutComponent } from './about/about.component';
+import { MapComponent } from './map/map.component';
 
 const appRoutes: Routes = [
   /*{ path: 'crisis-center', component: CrisisListComponent },
@@ -27,13 +28,18 @@ const appRoutes: Routes = [
     pathMatch: 'full'
   },
   { path: '**', component: PageNotFoundComponent }*/
+  { path: '', component: MapComponent },
   { path: 'about', component: AboutComponent },
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    AboutComponent
+    AboutComponent,
+    MapComponent
+  ],
+  entryComponents:[
+    MapComponent
   ],
   imports: [
     HttpClientModule,
