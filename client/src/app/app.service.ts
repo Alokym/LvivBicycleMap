@@ -10,6 +10,6 @@ export class AppService {
   ) { }
 
   getTest(): Observable<any> {
-    return this.http.get('./api').pipe();
+    return this.http.get('/api/points').pipe();
   }
 }
