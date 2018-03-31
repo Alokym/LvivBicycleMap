@@ -8,7 +8,41 @@ export class CategoriesService {
     private http: HttpClient
   ) { }
 
-  getPoints(): Observable<any> {
-    return this.http.get(`/api/points`).pipe();
+  getCategories() {
+    return this.http.get('/api/categories');
+  }
+
+  getPlaces(categories, position): Observable<any> {
+    const categoriesCsv = categories.join(',');
+    return this.http.get(`/api/points`, {
+      params: {
+        categories: categoriesCsv,
+        position
+      }
+    });
+  }
+
+  getSuggestions() {
+    return this.http.get('/api/places/suggestions');
+  }
+
+  postSuggestion(place) {
+    return this.http.post('/api/places/suggestions', place);
+  }
+
+  approveSuggestion({ id }) {
+    return this.http.put(`/api/places/suggestions/${id}/approval`, {});
+  }
+
+  rejectSuggestion({ id }) {
+    return this.http.put(`/api/places/suggestions/${id}/rejection`, {});
+  }
+
+  reportError({ coords, description, suggestedCoords }) {
+    return this.http.post(`/api/places/errors/`, { coords, description, suggestedCoords });
+  }
+
+  getReportedErrors() {
+    return this.http.get(`/api/places/errors/`);
   }
 }
