@@ -1,6 +1,5 @@
 <div class="example-container"
-     [class.example-is-mobile]="mobileQuery.matches"
-     *ngIf="shouldRun">
+     [class.example-is-mobile]="mobileQuery.matches">
   <mat-toolbar color="primary"
                class="example-toolbar">
     <button mat-icon-button
@@ -13,13 +12,11 @@
   <mat-sidenav-container class="example-sidenav-container"
                          [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
     <mat-sidenav #snav
+                 opened="true"
                  [mode]="mobileQuery.matches ? 'over' : 'side'"
                  [fixedInViewport]="mobileQuery.matches"
                  fixedTopGap="56">
       <mat-nav-list>
-        <!--<a mat-list-item
-           routerLink="."
-           *ngFor="let nav of fillerNav">{{nav}}</a>-->
 
         <a mat-list-item
            routerLink=".">Custom route</a>
@@ -37,7 +34,8 @@
     </mat-sidenav>
 
     <mat-sidenav-content>
-      <agm-map [latitude]="lat"
+      <agm-map [ngStyle]="{ height: mobileQuery.matches ? 'calc(100vh - 56px)' : '100vh' }"
+               [latitude]="lat"
                [longitude]="lng">
         <agm-marker [latitude]="lat"
                     [longitude]="lng"></agm-marker>
