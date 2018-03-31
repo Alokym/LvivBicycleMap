@@ -12,7 +12,7 @@ import { AgmCoreModule } from '@agm/core';
 import { AppMaterialModule } from './material.module';
 
 import { AppComponent } from './app.component';
-import { PlacesService } from './services/places.service';
+import { PointsService } from './services/points.service';
 
 import { MapComponent } from './components/map/map.component';
 import { NavListComponent } from './components/nav-list/nav-list.component';
@@ -54,7 +54,7 @@ import { MainComponent } from './main/main.component';
     )
   ],
   providers: [
-    PlacesService
+    PointsService
   ],
   bootstrap: [AppComponent]
 })
