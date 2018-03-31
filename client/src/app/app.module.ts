@@ -36,16 +36,10 @@ import { CustomRouteComponent } from './custom-route/custom-route.component';
     AboutComponent,
     EventsComponent,
     NewsFeedComponent,
-<<<<<<< HEAD
     FeedbackComponent,
     NotificationCenterComponent,
-||||||| merged common ancestors
-    FeedbackComponent
-=======
-    FeedbackComponent,
     CategoriesComponent,
     CustomRouteComponent
->>>>>>> 3aef70f23ae4493761b1d626ae84617e733569ac
   ],
   entryComponents: [
 
