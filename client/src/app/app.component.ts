@@ -9,7 +9,6 @@ import { AppService } from './app.service';
 })
 export class AppComponent implements OnInit, OnDestroy {
   mobileQuery: MediaQueryList;
-  fillerNav = Array(5).fill(0).map((_, i) => `Nav Item ${i + 1}`);
   lat = 49.8414619;
   lng = 24.0271152;
   shouldRun = true;
