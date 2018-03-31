@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
+import { mapStyles } from "./map.styles";
 
 @Component({
   selector: 'app-map',
@@ -35,4 +36,7 @@ export class MapComponent implements OnInit {
     }
   }
 
+  onMapReady(map) {
+      map.styles = mapStyles;
+  }
 }
