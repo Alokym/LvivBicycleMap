@@ -13,7 +13,8 @@ import { AppService } from './app.service';
 
 
 import { AboutComponent } from './about/about.component';
-import { MapComponent } from './map/map.component';
+import { MapComponent } from './components/map/map.component';
+import { NavListComponent } from './components/nav-list/nav-list.component';
 
 const appRoutes: Routes = [
   /*{ path: 'crisis-center', component: CrisisListComponent },
@@ -36,9 +37,10 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     AboutComponent,
-    MapComponent
-  ],
-  entryComponents:[
+    MapComponent,
+    NavListComponent
+],
+  entryComponents: [
     MapComponent
   ],
   imports: [
