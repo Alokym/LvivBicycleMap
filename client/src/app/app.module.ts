@@ -8,6 +8,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { RouteDefinitions } from './route-definitions';
 
 import { AgmCoreModule } from '@agm/core';
+import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
 
 import { AppMaterialModule } from './material.module';
 
@@ -48,6 +49,7 @@ import { MainComponent } from './main/main.component';
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBYGHYrVY3V7EVbHd4VZcDqMp6Tm5XfZPw'
     }),
+    AgmSnazzyInfoWindowModule,
     RouterModule.forRoot(
       RouteDefinitions,
       { enableTracing: true } // <-- debugging purposes only
