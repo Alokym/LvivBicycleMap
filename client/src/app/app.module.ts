@@ -52,7 +52,8 @@ import { CustomRouteComponent } from './custom-route/custom-route.component';
     AppMaterialModule,
     ReactiveFormsModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyBYGHYrVY3V7EVbHd4VZcDqMp6Tm5XfZPw'
+      apiKey: 'AIzaSyBKTfRKnchJLlRCHSL0RelFOQrE_BMMC_I',
+      libraries: ['places']
     }),
     AgmSnazzyInfoWindowModule,
     RouterModule.forRoot(
