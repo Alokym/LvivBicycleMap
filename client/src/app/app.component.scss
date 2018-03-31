@@ -2,7 +2,7 @@
   agm-map {
     height: 100vh;
   }
-  
+
   .example-container {
     display: flex;
     flex-direction: column;
@@ -35,4 +35,9 @@
     flex: 1 0 auto;
   }
   
+  mat-nav-list {
+    mat-icon {
+      margin-right: 10px;
+    }
+  }
 }
