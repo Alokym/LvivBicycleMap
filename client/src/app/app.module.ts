@@ -35,7 +35,8 @@ const appRoutes: Routes = [
     EventsComponent,
     NewsFeedComponent,
     MapComponent,
-    NavListComponent
+    NavListComponent,
+    FeedbackComponent
   ],
   entryComponents: [
     NavListComponent,
