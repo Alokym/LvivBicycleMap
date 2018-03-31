@@ -23,20 +23,29 @@ import { NotificationCenterComponent } from './notification-center/notification-
 import { EventsComponent } from './events/events.component';
 import { NewsFeedComponent } from './news-feed/news-feed.component';
 import { FeedbackComponent } from './feedback/feedback.component';
-import { MainComponent } from './main/main.component';
+import { MapService } from './components/map/map.service';
+import { CategoriesComponent } from './categories/categories.component';
+import { CustomRouteComponent } from './custom-route/custom-route.component';
 
 @NgModule({
   declarations: [
     MapComponent,
     NavListComponent,
 
-    MainComponent,
     AppComponent,
     AboutComponent,
     EventsComponent,
     NewsFeedComponent,
+<<<<<<< HEAD
     FeedbackComponent,
     NotificationCenterComponent,
+||||||| merged common ancestors
+    FeedbackComponent
+=======
+    FeedbackComponent,
+    CategoriesComponent,
+    CustomRouteComponent
+>>>>>>> 3aef70f23ae4493761b1d626ae84617e733569ac
   ],
   entryComponents: [
 
@@ -58,6 +67,7 @@ import { MainComponent } from './main/main.component';
     )
   ],
   providers: [
+    MapService,
     PointsService
   ],
   bootstrap: [AppComponent]
