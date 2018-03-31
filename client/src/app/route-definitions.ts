@@ -12,5 +12,5 @@ export const RouteDefinitions: Routes = [
   { path: 'news-feed', component: NewsFeedComponent },
   { path: 'feedback', component: FeedbackComponent },
   { path: 'categories', component: CategoriesComponent },
-  { path: 'custom-route', component: CategoriesComponent }
+  { path: 'custom-route', component: CustomRouteComponent }
 ];

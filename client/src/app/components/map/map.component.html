@@ -14,7 +14,10 @@
     </agm-snazzy-info-window>-->
   </agm-marker>
 
-  <agm-marker *ngFor="let point of points;" [latitude]="point.lat"
+  <agm-marker *ngFor="let point of points;"
+              [latitude]="point.lat"
+              [title]="'test'"
               [longitude]="point.lng">
   </agm-marker>
 </agm-map>
+<div>{{ points.length }}</div>

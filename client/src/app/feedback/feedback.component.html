@@ -1,27 +1,29 @@
-<mat-card >
-  <mat-card-title>Feedback</mat-card-title>
+<div class="mdl-grid">
+  <mat-card class="mdl-cell mdl-cell--6-col" >
+    <mat-card-title>Feedback</mat-card-title>
 
-  <form class="form-container" (ngSubmit)="onSubmit()">
-    <mat-form-field>
-      <mat-label>Enter Full Name</mat-label>
-      <input matInput placeholder="Full Name" type="text" [formControl]="fullName" required>
-      <mat-error *ngIf="fullName.invalid">{{getFullNameErrorMessage()}}</mat-error>
-    </mat-form-field>
+    <form class="form-container" (ngSubmit)="onSubmit()">
+      <mat-form-field class="mat-input">
+        <mat-label>Enter Full Name</mat-label>
+        <input class="feedback-input" matInput placeholder="Full Name" type="text" [formControl]="fullName" required>
+        <mat-error *ngIf="fullName.invalid">{{getFullNameErrorMessage()}}</mat-error>
+      </mat-form-field>
 
-    <mat-form-field>
-      <mat-label>Enter your email</mat-label>
-      <input matInput placeholder="Email" type="email" [formControl]="email" required>
-      <mat-error *ngIf="email.invalid">{{getEmailErrorMessage()}}</mat-error>
-    </mat-form-field>
+      <mat-form-field class="mat-input">
+        <mat-label>Enter your email</mat-label>
+        <input class="feedback-input" matInput placeholder="Email" type="email" [formControl]="email" required>
+        <mat-error *ngIf="email.invalid">{{getEmailErrorMessage()}}</mat-error>
+      </mat-form-field>
 
-    <mat-form-field>
-      <mat-label>Enter your comment</mat-label>
-      <textarea matInput matTextareaAutosize matAutosizeMinRows="4" placeholder="Comment" [formControl]="comment" required></textarea>
-      <mat-error *ngIf="comment.invalid">{{getCommentErrorMessage()}}</mat-error>
-    </mat-form-field>
+      <mat-form-field>
+        <mat-label>Enter your comment</mat-label>
+        <textarea class="comment" matInput matTextareaAutosize matAutosizeMinRows="4" placeholder="Comment" [formControl]="comment" required></textarea>
+        <mat-error *ngIf="comment.invalid">{{getCommentErrorMessage()}}</mat-error>
+      </mat-form-field>
 
-    <div class="button-row">
-      <button mat-raised-button type="submit">Submit</button>
-    </div>
-  </form>
-</mat-card>
+      <div class="button-row">
+        <button mat-raised-button type="submit">Submit</button>
+      </div>
+    </form>
+  </mat-card>
+</div>

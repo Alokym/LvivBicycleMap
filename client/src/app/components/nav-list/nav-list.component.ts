@@ -1,3 +1,4 @@
+import { PointsService } from './../../services/points.service';
 import { Component, OnInit } from '@angular/core';
 import {
   trigger,
@@ -7,6 +8,8 @@ import {
   transition
 } from '@angular/animations';
 import { CustomRouteService } from '../../custom-route/custom-route.service';
+import { MapService } from '../map/map.service';
+import { CategoriesService } from '../../categories/categories.service';
 
 @Component({
   selector: 'app-nav-list',
@@ -29,21 +32,31 @@ export class NavListComponent implements OnInit {
   public menuState = 'left';
   public activeSide = '';
 
-  public categories = [
-    {name: 'Cat 1', enabled: false},
-    {name: 'Cat 2', enabled: false},
-    {name: 'Cat 3', enabled: false},
-    {name: 'Cat 4', enabled: false},
-  ];
+  public categories = [];
 
   public points = [];
 
   constructor(
-    private customRouteService: CustomRouteService
+    private customRouteService: CustomRouteService,
+    private categoriesService: CategoriesService,
+    private pointsService: PointsService,
+    private mapService: MapService
   ) { }
 
   ngOnInit() {
     this.points = this.customRouteService.points;
+
+    this.pointsService.getCategories().subscribe((res: any) => {
+      this.categories = res.map(item => ({_id: item._id, name: item.name.split('|')[0]}));
+    });
+  }
+
+  selectCategory(cat) {
+    cat.enabled = cat.enabled !== true;
+
+    const categories = this.categories.filter(category => category.enabled);
+
+    this.categoriesService.drawCategoris(categories);
   }
 
   addPoint() {

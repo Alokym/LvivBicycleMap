@@ -42,7 +42,9 @@ export class MapComponent implements OnInit {
 
   ngOnInit() {
     this.setLocation();
-    this.points = this.service.points;
+    this.service.onDraw.subscribe(res => {
+      this.points = res;
+    });
   }
 
   setLocation() {

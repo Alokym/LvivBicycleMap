@@ -27,6 +27,7 @@ import { MapService } from './components/map/map.service';
 import { CategoriesComponent } from './categories/categories.component';
 import { CustomRouteComponent } from './custom-route/custom-route.component';
 import { CustomRouteService } from './custom-route/custom-route.service';
+import { CategoriesService } from './categories/categories.service';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { CustomRouteService } from './custom-route/custom-route.service';
   providers: [
     MapService,
     PointsService,
-    CustomRouteService
+    CustomRouteService,
+    CategoriesService
   ],
   bootstrap: [AppComponent]
 })
