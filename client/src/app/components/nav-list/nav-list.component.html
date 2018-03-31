@@ -1,13 +1,14 @@
 <div class="menu-wrapper" [@menuState]="menuState">
   <div class="left-menu">
-    <a mat-list-item routerLink="." (click)="slide()">
+    <a mat-list-item routerLink="/categories" routerLinkActive="active-link" (click)="slide('categories')">
       <mat-icon>layers</mat-icon>
       <span>Categories</span>
       <mat-icon class="right-icon">keyboard_arrow_right</mat-icon>
     </a>
-    <a mat-list-item routerLink="/custom-route" routerLinkActive="active-link">
+    <a mat-list-item routerLink="/custom-route" routerLinkActive="active-link" (click)="slide('custom-route')">
       <mat-icon>swap_calls</mat-icon>
       <span>Custom route</span>
+      <mat-icon class="right-icon">keyboard_arrow_right</mat-icon>
     </a>
     <a mat-list-item routerLink="/events" routerLinkActive="active-link">
       <mat-icon>event</mat-icon>
@@ -21,22 +22,34 @@
       <mat-icon>feedback</mat-icon>
       <span>Send feedback</span>
     </a>
-    <a mat-list-item
-      routerLink="/about">
+    <a mat-list-item routerLink="/about" routerLinkActive="active-link">
       <mat-icon>info</mat-icon>
       <span>About</span>
     </a>
   </div>
   <div class="right-menu">
-    <a mat-list-item routerLink="." (click)="slideBack()">
+    <a mat-list-item routerLink="{{ activeSide }}" (click)="slideBack()">
       <mat-icon>keyboard_arrow_left</mat-icon>
       <span>Back</span>
     </a>
-    <mat-list role="list">
+    <mat-list role="list" *ngIf="activeSide === 'categories'">
       <mat-list-item role="listitem" *ngFor="let cat of categories;"
         (click)="cat.enabled = !cat.enabled">
         <mat-checkbox [(ngModel)]="cat.enabled">{{ cat.name }}</mat-checkbox>
       </mat-list-item>
     </mat-list>
+    <mat-list role="list" *ngIf="activeSide === 'custom-route'">
+      <mat-list-item role="listitem" class="cursor-default" *ngFor="let point of points; let i = index;">
+        <mat-form-field class="input-form-field">
+          <input matInput type="text" placeholder="{{ i === 0 ? 'From' : i === 1 ? 'To' : 'Then to' }}" [(ngModel)]="point.value"/>
+          <button mat-button *ngIf="point.value" matSuffix mat-icon-button aria-label="Clear" (click)="point.value=''">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+      </mat-list-item>
+    </mat-list>
+    <div style="text-align: center">
+      <button mat-raised-button color="primary" (click)="addPoint()">Add a stop</button>
+    </div>
   </div>
 </div>

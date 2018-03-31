@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {MediaMatcher} from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-categories',
@@ -6,8 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./categories.component.scss']
 })
 export class CategoriesComponent implements OnInit {
+  mobileQuery: MediaQueryList;
 
-  constructor() { }
+  constructor(
+    private media: MediaMatcher,
+  ) {
+    this.mobileQuery = this.media.matchMedia('(max-width: 600px)');
+  }
 
   ngOnInit() {
   }

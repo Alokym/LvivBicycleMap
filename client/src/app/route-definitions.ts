@@ -7,10 +7,10 @@ import {CustomRouteComponent} from './custom-route/custom-route.component';
 import {Routes} from '@angular/router';
 
 export const RouteDefinitions: Routes = [
-  { path: '', component: CategoriesComponent },
   { path: 'about', component: AboutComponent },
   { path: 'events', component: EventsComponent },
   { path: 'news-feed', component: NewsFeedComponent },
   { path: 'feedback', component: FeedbackComponent },
-  { path: 'custom-route', component: CustomRouteComponent}
+  { path: 'categories', component: CategoriesComponent },
+  { path: 'custom-route', component: CategoriesComponent }
 ];

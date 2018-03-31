@@ -26,6 +26,7 @@ import { FeedbackComponent } from './feedback/feedback.component';
 import { MapService } from './components/map/map.service';
 import { CategoriesComponent } from './categories/categories.component';
 import { CustomRouteComponent } from './custom-route/custom-route.component';
+import { CustomRouteService } from './custom-route/custom-route.service';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { CustomRouteComponent } from './custom-route/custom-route.component';
   ],
   providers: [
     MapService,
-    PointsService
+    PointsService,
+    CustomRouteService
   ],
   bootstrap: [AppComponent]
 })
