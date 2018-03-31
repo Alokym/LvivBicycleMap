@@ -22,20 +22,22 @@ import { AboutComponent } from './about/about.component';
 import { EventsComponent } from './events/events.component';
 import { NewsFeedComponent } from './news-feed/news-feed.component';
 import { FeedbackComponent } from './feedback/feedback.component';
-import { MainComponent } from './main/main.component';
 import { MapService } from './components/map/map.service';
+import { CategoriesComponent } from './categories/categories.component';
+import { CustomRouteComponent } from './custom-route/custom-route.component';
 
 @NgModule({
   declarations: [
     MapComponent,
     NavListComponent,
 
-    MainComponent,
     AppComponent,
     AboutComponent,
     EventsComponent,
     NewsFeedComponent,
-    FeedbackComponent
+    FeedbackComponent,
+    CategoriesComponent,
+    CustomRouteComponent
   ],
   entryComponents: [
 
