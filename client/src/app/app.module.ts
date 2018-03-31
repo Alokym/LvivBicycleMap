@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule} from '@angular/router';
 import { RouteDefinitions } from './route-definitions';
 
 import { AgmCoreModule } from '@agm/core';
@@ -28,6 +28,8 @@ import { CategoriesComponent } from './categories/categories.component';
 import { CustomRouteComponent } from './custom-route/custom-route.component';
 import { CustomRouteService } from './custom-route/custom-route.service';
 import { CategoriesService } from './categories/categories.service';
+import { SuggestionsFormComponent } from './components/suggestions-form/suggestions-form.component';
+import { DetailsFormComponent } from './components/details-form/details-form.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { CategoriesService } from './categories/categories.service';
     FeedbackComponent,
     NotificationCenterComponent,
     CategoriesComponent,
-    CustomRouteComponent
+    CustomRouteComponent,
+    SuggestionsFormComponent,
+    DetailsFormComponent
   ],
   entryComponents: [
 
@@ -54,7 +58,8 @@ import { CategoriesService } from './categories/categories.service';
     AppMaterialModule,
     ReactiveFormsModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyBYGHYrVY3V7EVbHd4VZcDqMp6Tm5XfZPw'
+      apiKey: 'AIzaSyBKTfRKnchJLlRCHSL0RelFOQrE_BMMC_I',
+      libraries: ['places']
     }),
     AgmSnazzyInfoWindowModule,
     RouterModule.forRoot(

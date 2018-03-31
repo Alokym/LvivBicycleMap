@@ -2,22 +2,14 @@
          [latitude]="defaults.lat"
          [longitude]="defaults.lng"
          (mapReady)="onMapReady($event)"
+         (mapClick)="onMapClick($event)"
          [zoom]="defaults.zoom"
          [styles]="mapOptions.styles">
-  <agm-marker [latitude]="marker.lat"
-              [longitude]="marker.lng">
-<!--    <agm-snazzy-info-window [isOpen]="true" [latitude]="defaults.lat"
-    [longitude]="defaults.lng" [closeWhenOthersOpen]="true">
-      <ng-template>
-        My first Snazzy Info Window!
-      </ng-template>
-    </agm-snazzy-info-window>-->
-  </agm-marker>
 
   <agm-marker *ngFor="let point of points;"
               [latitude]="point.lat"
               [title]="'test'"
-              [longitude]="point.lng">
+              [longitude]="point.lng"
+              (markerClick)="onMarkerClick(point)">
   </agm-marker>
 </agm-map>
-<div>{{ points.length }}</div>
