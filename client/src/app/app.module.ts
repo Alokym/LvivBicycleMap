@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { RouterModule, Routes } from '@angular/router';
 import { RouteDefinitions } from './route-definitions';
@@ -43,6 +44,8 @@ import { FeedbackComponent } from './feedback/feedback.component';
     BrowserModule,
     BrowserAnimationsModule,
     AppMaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBYGHYrVY3V7EVbHd4VZcDqMp6Tm5XfZPw'
     }),
