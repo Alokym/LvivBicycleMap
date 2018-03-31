@@ -13,7 +13,7 @@ router.get('/points', async (req, res) => {
     } catch (error) {
         res.status(400);
 
-        return res.end();
+        return res.json(error);
     }
 });
 

@@ -8,11 +8,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { RouteDefinitions } from './route-definitions';
 
 import { AgmCoreModule } from '@agm/core';
+import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
 
 import { AppMaterialModule } from './material.module';
 
 import { AppComponent } from './app.component';
-import { PlacesService } from './services/places.service';
+import { PointsService } from './services/points.service';
 
 import { MapComponent } from './components/map/map.component';
 import { NavListComponent } from './components/nav-list/nav-list.component';
@@ -48,13 +49,14 @@ import { MainComponent } from './main/main.component';
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBYGHYrVY3V7EVbHd4VZcDqMp6Tm5XfZPw'
     }),
+    AgmSnazzyInfoWindowModule,
     RouterModule.forRoot(
       RouteDefinitions,
       { enableTracing: true } // <-- debugging purposes only
     )
   ],
   providers: [
-    PlacesService
+    PointsService
   ],
   bootstrap: [AppComponent]
 })
