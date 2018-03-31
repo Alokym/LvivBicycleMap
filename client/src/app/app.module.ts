@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { RouterModule, Routes } from '@angular/router';
 import { RouteDefinitions } from './route-definitions';
@@ -21,12 +21,14 @@ import { AboutComponent } from './about/about.component';
 import { EventsComponent } from './events/events.component';
 import { NewsFeedComponent } from './news-feed/news-feed.component';
 import { FeedbackComponent } from './feedback/feedback.component';
+import { MainComponent } from './main/main.component';
 
 @NgModule({
   declarations: [
     MapComponent,
     NavListComponent,
 
+    MainComponent,
     AppComponent,
     AboutComponent,
     EventsComponent,
@@ -42,6 +44,7 @@ import { FeedbackComponent } from './feedback/feedback.component';
     FormsModule,
     BrowserAnimationsModule,
     AppMaterialModule,
+    ReactiveFormsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBYGHYrVY3V7EVbHd4VZcDqMp6Tm5XfZPw'
     }),
