@@ -2,7 +2,9 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { RouterModule, Routes } from '@angular/router';
+import { RouteDefinitions } from './route-definitions';
 
 import { AgmCoreModule } from '@agm/core';
 
@@ -17,15 +19,6 @@ import { MapComponent } from './map/map.component';
 import { EventsComponent } from './events/events.component';
 import { NewsFeedComponent } from './news-feed/news-feed.component';
 import { FeedbackComponent } from './feedback/feedback.component';
-
-const appRoutes: Routes = [
-  { path: '', component: MapComponent },
-  { path: 'about', component: AboutComponent },
-  { path: 'events', component: EventsComponent },
-  { path: 'news-feed', component: NewsFeedComponent },
-  { path: 'feedback', component: FeedbackComponent },
-
-];
 
 @NgModule({
   declarations: [
@@ -48,7 +41,7 @@ const appRoutes: Routes = [
       apiKey: 'AIzaSyBYGHYrVY3V7EVbHd4VZcDqMp6Tm5XfZPw'
     }),
     RouterModule.forRoot(
-      appRoutes,
+      RouteDefinitions,
       { enableTracing: true } // <-- debugging purposes only
     )
   ],
