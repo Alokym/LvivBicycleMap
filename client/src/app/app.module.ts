@@ -23,6 +23,7 @@ import { EventsComponent } from './events/events.component';
 import { NewsFeedComponent } from './news-feed/news-feed.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { MainComponent } from './main/main.component';
+import { MapService } from './components/map/map.service';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { MainComponent } from './main/main.component';
     )
   ],
   providers: [
-    PlacesService
+    PlacesService,
+    MapService
   ],
   bootstrap: [AppComponent]
 })

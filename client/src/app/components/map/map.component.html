@@ -12,4 +12,14 @@
       </ng-template>
     </agm-snazzy-info-window>
   </agm-marker>
+
+  <agm-marker *ngFor="let point of points;" [latitude]="point.lat"
+              [longitude]="point.lng">
+    <agm-snazzy-info-window [isOpen]="true" [latitude]="point.lat"
+    [longitude]="point.lng" [closeWhenOthersOpen]="true">
+      <ng-template>
+        {{ point.info }}
+      </ng-template>
+    </agm-snazzy-info-window>
+  </agm-marker>
 </agm-map>

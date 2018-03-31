@@ -1,3 +1,4 @@
+import { MapService } from './map.service';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 
@@ -24,11 +25,14 @@ export class MapComponent implements OnInit {
     styles: new MapSettings()
   };
 
+  points = [];
+
   private _mobileQueryListener: () => void;
 
   constructor(
     private changeDetectorRef: ChangeDetectorRef,
     private media: MediaMatcher,
+    private service: MapService,
   ) {
     this.mobileQuery = this.media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => this.changeDetectorRef.detectChanges();
@@ -37,6 +41,7 @@ export class MapComponent implements OnInit {
 
   ngOnInit() {
     this.setLocation();
+    this.points = this.service.points;
   }
 
   setLocation() {
@@ -44,7 +49,6 @@ export class MapComponent implements OnInit {
       navigator.geolocation.getCurrentPosition((position) => {
         this.marker.lat = position.coords.latitude;
         this.marker.lng = position.coords.longitude;
-        console.log(position);
       });
     }
   }
