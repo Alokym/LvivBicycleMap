@@ -4,6 +4,7 @@ const env = process.env.NODE_ENV || 'local';
 
 const config = require(`../config/${env}.json`);
 const mongoose = require('mongoose');
+require('mongoose-geojson-schema');
 
 mongoose.connect(config.mongo);
 

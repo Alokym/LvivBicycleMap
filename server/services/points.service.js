@@ -1,15 +1,25 @@
 'use strict';
 
 const {Types} = require('mongoose');
-const ObjectID = require('mongodb').ObjectID;
 const pointsModel = require('../models/geoJSON.model');
 
-async function getPoints({categories}) {
+async function getPoints({categories, lon, lat, radius = 100}) {
     const executor = (resolve, reject) => {
         const condition = {};
 
-        if(categories.length) {
-            condition['feature.properties.category.id'] = {'$in' : categories.map((c) => new Types.ObjectId(c))};
+        if (categories.length) {
+            condition['feature.properties.category.id'] = {'$in': categories.map((c) => new Types.ObjectId(c))};
+        }
+
+        if (lon !== undefined && lat !== undefined) {
+            condition['feature.geometry'] = {
+                $near:
+                    {
+                        $geometry: {type: 'Point', coordinates: [Number(lon), Number(lat)]},
+                        $minDistance: 0,
+                        $maxDistance: Number(radius)
+                    }
+            }
         }
 
         const query = pointsModel.find(condition).lean();
