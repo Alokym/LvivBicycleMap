@@ -9,9 +9,6 @@ import { AppService } from './app.service';
 })
 export class AppComponent implements OnInit, OnDestroy {
   mobileQuery: MediaQueryList;
-  lat = 49.8414619;
-  lng = 24.0271152;
-  shouldRun = true;
 
   private _mobileQueryListener: () => void;
 
@@ -23,22 +20,11 @@ export class AppComponent implements OnInit, OnDestroy {
     this.mobileQuery = this.media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => this.changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
-    this.setLocation();
   }
 
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
-
-  setLocation() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        this.lat = position.coords.latitude;
-        this.lng = position.coords.longitude;
-      });
-    }
-  }
-
 
   ngOnInit() {
     // this.service.getTest().subscribe();
