@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
-export class PlacesService {
+export class PointsService {
   constructor(
     private http: HttpClient
   ) { }
@@ -12,7 +12,7 @@ export class PlacesService {
     return this.http.get('/api/categories');
   }
 
-  getPlaces(categories, position): Observable<any> {
+  getPoints(categories, position): Observable<any> {
     const categoriesCsv = categories.join(',');
     return this.http.get(`/api/points`, {
       params: {
@@ -23,26 +23,26 @@ export class PlacesService {
   }
 
   getSuggestions() {
-    return this.http.get('/api/places/suggestions');
+    return this.http.get('/api/points/suggestions');
   }
 
   postSuggestion(place) {
-    return this.http.post('/api/places/suggestions', place);
+    return this.http.post('/api/points/suggestions', place);
   }
 
   approveSuggestion({ id }) {
-    return this.http.put(`/api/places/suggestions/${id}/approval`, {});
+    return this.http.put(`/api/points/suggestions/${id}/approval`, {});
   }
 
   rejectSuggestion({ id }) {
-    return this.http.put(`/api/places/suggestions/${id}/rejection`, {});
+    return this.http.put(`/api/points/suggestions/${id}/rejection`, {});
   }
 
   reportError({ coords, description, suggestedCoords }) {
-    return this.http.post(`/api/places/errors/`, { coords, description, suggestedCoords });
+    return this.http.post(`/api/points/errors/`, { coords, description, suggestedCoords });
   }
 
   getReportedErrors() {
-    return this.http.get(`/api/places/errors/`);
+    return this.http.get(`/api/points/errors/`);
   }
 }
