@@ -1,13 +1,13 @@
 <div class="menu-wrapper" [@menuState]="menuState">
   <div class="left-menu">
-    <a mat-list-item routerLink=".">
-      <mat-icon>swap_calls</mat-icon>
-      <span>Custom route</span>
-    </a>
     <a mat-list-item routerLink="." (click)="slide()">
       <mat-icon>layers</mat-icon>
       <span>Categories</span>
       <mat-icon class="right-icon">keyboard_arrow_right</mat-icon>
+    </a>
+    <a mat-list-item routerLink=".">
+      <mat-icon>swap_calls</mat-icon>
+      <span>Custom route</span>
     </a>
     <a mat-list-item routerLink="/events">
       <mat-icon>event</mat-icon>
