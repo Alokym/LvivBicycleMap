@@ -3,9 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { AgmCoreModule } from '@agm/core';
+
+import { AppMaterialModule } from './material.module';
 
 import { AppComponent } from './app.component';
-import { AppMaterialModule } from './material.module';
 import { AppService } from './app.service';
 
 
@@ -17,7 +19,10 @@ import { AppService } from './app.service';
     HttpClientModule,
     BrowserModule,
     BrowserAnimationsModule,
-    AppMaterialModule
+    AppMaterialModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyACTUtn8dZBGcfDIQG3MMsNsXd3VVWcSys'
+    })
   ],
   providers: [
     AppService

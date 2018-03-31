@@ -8,6 +8,8 @@ import { AppService } from './app.service';
 })
 export class AppComponent implements OnInit {
   title = 'app';
+  lat = 51.678418;
+  lng = 7.809007;
 
   constructor(
     private service: AppService
