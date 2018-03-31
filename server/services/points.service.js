@@ -1,10 +1,18 @@
 'use strict';
 
+const {Types} = require('mongoose');
+const ObjectID = require('mongodb').ObjectID;
 const pointsModel = require('../models/geoJSON.model');
 
-async function getPoints() {
+async function getPoints({categories}) {
     const executor = (resolve, reject) => {
-        const query = pointsModel.find({}).lean();
+        const condition = {};
+
+        if(categories.length) {
+            condition['feature.properties.category.id'] = {'$in' : categories.map((c) => new Types.ObjectId(c))};
+        }
+
+        const query = pointsModel.find(condition).lean();
 
         query.exec((error, result) => {
             if (error) {
