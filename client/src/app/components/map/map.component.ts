@@ -2,6 +2,8 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { mapStyles } from "./map.styles";
 
+import { MapSettings } from './map.settings';
+
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
@@ -9,8 +11,19 @@ import { mapStyles } from "./map.styles";
 })
 export class MapComponent implements OnInit {
   mobileQuery: MediaQueryList;
-  lat = 49.8414619;
-  lng = 24.0271152;
+  defaults = {
+    lat: 49.8414619,
+    lng: 24.0271152,
+    zoom: 16
+  };
+  marker = {
+    lat: 49.8414619,
+    lng: 24.0271152
+  };
+
+  mapOptions = {
+    styles: new MapSettings()
+  };
 
   private _mobileQueryListener: () => void;
 
@@ -30,8 +43,9 @@ export class MapComponent implements OnInit {
   setLocation() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
-        this.lat = position.coords.latitude;
-        this.lng = position.coords.longitude;
+        this.marker.lat = position.coords.latitude;
+        this.marker.lng = position.coords.longitude;
+        console.log(position);
       });
     }
   }

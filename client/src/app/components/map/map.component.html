@@ -1,7 +1,16 @@
 <agm-map [ngStyle]="{ height: mobileQuery.matches ? 'calc(100vh - 56px)' : 'calc(100vh - 64px)' }"
-         [latitude]="lat"
-         [longitude]="lng"
-          (mapReady)="onMapReady($event)">
-  <agm-marker [latitude]="lat"
-              [longitude]="lng"></agm-marker>
+         [latitude]="defaults.lat"
+         [longitude]="defaults.lng"
+         (mapReady)="onMapReady($event)
+         [zoom]="defaults.zoom"
+         [styles]="mapOptions.styles">
+  <agm-marker [latitude]="marker.lat"
+              [longitude]="marker.lng">
+    <agm-snazzy-info-window [isOpen]="true" [latitude]="defaults.lat"
+    [longitude]="defaults.lng" [closeWhenOthersOpen]="true">
+      <ng-template>
+        My first Snazzy Info Window!
+      </ng-template>
+    </agm-snazzy-info-window>
+  </agm-marker>
 </agm-map>
