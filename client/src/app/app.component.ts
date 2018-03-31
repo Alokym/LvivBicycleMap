@@ -1,21 +1,32 @@
-import { Component, OnInit } from '@angular/core';
-import { AppService } from './app.service';
+import { MediaMatcher } from '@angular/cdk/layout';
+import { ChangeDetectorRef, Component, OnInit, OnDestroy } from '@angular/core';
+import { PlacesService } from './services/places.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: [ './app.component.scss' ]
 })
-export class AppComponent implements OnInit {
-  title = 'app';
-  lat = 51.678418;
-  lng = 7.809007;
+export class AppComponent implements OnInit, OnDestroy {
+  mobileQuery: MediaQueryList;
+
+  private _mobileQueryListener: () => void;
 
   constructor(
-    private service: AppService
-  ) {}
+    private service: PlacesService,
+    private changeDetectorRef: ChangeDetectorRef,
+    private media: MediaMatcher
+  ) {
+    this.mobileQuery = this.media.matchMedia('(max-width: 600px)');
+    this._mobileQueryListener = () => this.changeDetectorRef.detectChanges();
+    this.mobileQuery.addListener(this._mobileQueryListener);
+  }
+
+  ngOnDestroy(): void {
+    this.mobileQuery.removeListener(this._mobileQueryListener);
+  }
 
   ngOnInit() {
-    this.service.getTest().subscribe();
+    // this.service.getTest().subscribe();
   }
 }

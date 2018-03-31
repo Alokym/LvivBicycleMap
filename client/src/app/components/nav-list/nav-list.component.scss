@@ -1,0 +1,29 @@
+:host {
+  display: block;
+  width: 200px;
+
+  mat-icon {
+    margin-right: 10px;
+
+    &.right-icon {
+      right: 0;
+      position: absolute;
+    }
+  }
+
+  .menu-wrapper {
+    position: absolute;
+    width: 405px;
+
+    .right-menu,
+    .left-menu {
+      display: inline-block;
+      width: 200px;
+      vertical-align: top;
+
+      .mat-checkbox {
+        pointer-events: none;
+      }
+    }
+  }
+}

@@ -1,0 +1,42 @@
+<div class="menu-wrapper" [@menuState]="menuState">
+  <div class="left-menu">
+    <a mat-list-item routerLink="." (click)="slide()">
+      <mat-icon>layers</mat-icon>
+      <span>Categories</span>
+      <mat-icon class="right-icon">keyboard_arrow_right</mat-icon>
+    </a>
+    <a mat-list-item routerLink=".">
+      <mat-icon>swap_calls</mat-icon>
+      <span>Custom route</span>
+    </a>
+    <a mat-list-item routerLink="/events">
+      <mat-icon>event</mat-icon>
+      <span>Events</span>
+    </a>
+    <a mat-list-item routerLink="/news-feed">
+      <mat-icon>library_books</mat-icon>
+      <span>News feed</span>
+    </a>
+    <a mat-list-item routerLink="/feedback">
+      <mat-icon>feedback</mat-icon>
+      <span>Send feedback</span>
+    </a>
+    <a mat-list-item
+      routerLink="/about">
+      <mat-icon>info</mat-icon>
+      <span>About</span>
+    </a>
+  </div>
+  <div class="right-menu">
+    <a mat-list-item routerLink="." (click)="slideBack()">
+      <mat-icon>keyboard_arrow_left</mat-icon>
+      <span>Back</span>
+    </a>
+    <mat-list role="list">
+      <mat-list-item role="listitem" *ngFor="let cat of categories;"
+        (click)="cat.enabled = !cat.enabled">
+        <mat-checkbox [(ngModel)]="cat.enabled">{{ cat.name }}</mat-checkbox>
+      </mat-list-item>
+    </mat-list>
+  </div>
+</div>
