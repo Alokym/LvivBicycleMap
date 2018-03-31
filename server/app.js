@@ -19,10 +19,12 @@ app.use(express.static(path.join(__dirname, '..', 'client', 'dist')));
 app.use(cors());
 
 const indexRouter = require('./routes/index');
-const pointsRouter = require('./routes/points');
+const pointsRouter = require('./routes/points.route');
+const categoriesRouter = require('./routes/categories.route');
 
 app.use('/api', indexRouter);
 app.use('/api', pointsRouter);
+app.use('/api', categoriesRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -37,7 +39,7 @@ app.use(function (err, req, res, next) {
 
     // render the error page
     res.status(err.status || 500);
-    res.render('error');
+    res.json(err);
 });
 
 module.exports = app;

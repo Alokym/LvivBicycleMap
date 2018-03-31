@@ -1,6 +1,7 @@
 import { MapService } from './map.service';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
+import { mapStyles } from "./map.styles";
 
 import { MapSettings } from './map.settings';
 
@@ -53,4 +54,7 @@ export class MapComponent implements OnInit {
     }
   }
 
+  onMapReady(map) {
+      map.styles = mapStyles;
+  }
 }

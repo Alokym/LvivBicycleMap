@@ -1,7 +1,8 @@
 import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef, Component, OnInit, OnDestroy } from '@angular/core';
-import { PlacesService } from './services/places.service';
+
 import { MapService } from './components/map/map.service';
+import { PointsService } from './services/points.service';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,7 @@ export class AppComponent implements OnInit, OnDestroy {
   private _mobileQueryListener: () => void;
 
   constructor(
-    private service: PlacesService,
+    private service: PointsService,
     private changeDetectorRef: ChangeDetectorRef,
     private media: MediaMatcher,
     private mapService: MapService
