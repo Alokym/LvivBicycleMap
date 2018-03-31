@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { MediaMatcher } from '@angular/cdk/layout';
+import { ChangeDetectorRef, Component, OnInit, OnDestroy } from '@angular/core';
 import { AppService } from './app.service';
 
 @Component({
@@ -6,16 +7,30 @@ import { AppService } from './app.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
-  title = 'app';
+export class AppComponent implements OnInit, OnDestroy {
+  mobileQuery: MediaQueryList;
+  fillerNav = Array(5).fill(0).map((_, i) => `Nav Item ${i + 1}`);
   lat = 49.8414619;
   lng = 24.0271152;
+  shouldRun = true;
+
+  private _mobileQueryListener: () => void;
 
   constructor(
-    private service: AppService
-  ) {}
+    private service: AppService,
+    private changeDetectorRef: ChangeDetectorRef,
+    private media: MediaMatcher
+  ) {
+    this.mobileQuery = this.media.matchMedia('(max-width: 600px)');
+    this._mobileQueryListener = () => this.changeDetectorRef.detectChanges();
+    this.mobileQuery.addListener(this._mobileQueryListener);
+  }
+
+  ngOnDestroy(): void {
+    this.mobileQuery.removeListener(this._mobileQueryListener);
+  }
 
   ngOnInit() {
-    this.service.getTest().subscribe();
+    // this.service.getTest().subscribe();
   }
 }
