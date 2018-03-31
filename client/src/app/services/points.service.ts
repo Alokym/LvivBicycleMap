@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/observable/of';
 
 @Injectable()
 export class PointsService {
+  public suggestions;
+
   constructor(
     private http: HttpClient
   ) { }
@@ -22,8 +25,14 @@ export class PointsService {
     });
   }
 
-  getSuggestions() {
-    return this.http.get('/api/points/suggestions');
+  loadSuggestions() {
+    // return this.http.get('/api/points/suggestions');
+    this.suggestions = of([
+      {
+        category: 'parking',
+        description: 'volodymyra velykogo str',
+      }
+    ]);
   }
 
   postSuggestion(place) {
