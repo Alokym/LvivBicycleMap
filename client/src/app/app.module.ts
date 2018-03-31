@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { RouterModule, Routes } from '@angular/router';
 import { RouteDefinitions } from './route-definitions';
@@ -25,28 +25,25 @@ import { MainComponent } from './main/main.component';
 
 @NgModule({
   declarations: [
+    MapComponent,
+    NavListComponent,
+
+    MainComponent,
     AppComponent,
     AboutComponent,
     EventsComponent,
     NewsFeedComponent,
-    MapComponent,
-    NavListComponent,
-    FeedbackComponent,
-    MainComponent
+    FeedbackComponent
   ],
   entryComponents: [
-    NavListComponent,
-    EventsComponent,
-    NewsFeedComponent,
-    FeedbackComponent,
-    MapComponent
+
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
+    FormsModule,
     BrowserAnimationsModule,
     AppMaterialModule,
-    FormsModule,
     ReactiveFormsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBYGHYrVY3V7EVbHd4VZcDqMp6Tm5XfZPw'
