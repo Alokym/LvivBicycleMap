@@ -3,13 +3,12 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
-export class AppService {
-
+export class CategoriesService {
   constructor(
     private http: HttpClient
   ) { }
 
-  getTest(): Observable<any> {
+  getPoints(): Observable<any> {
     return this.http.get(`/api/points`).pipe();
   }
 }

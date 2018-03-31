@@ -1,6 +1,6 @@
 import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef, Component, OnInit, OnDestroy } from '@angular/core';
-import { AppService } from './app.service';
+import { CategoriesService } from './services/categories.service';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +13,7 @@ export class AppComponent implements OnInit, OnDestroy {
   private _mobileQueryListener: () => void;
 
   constructor(
-    private service: AppService,
+    private service: CategoriesService,
     private changeDetectorRef: ChangeDetectorRef,
     private media: MediaMatcher
   ) {
