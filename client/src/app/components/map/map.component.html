@@ -4,5 +4,12 @@
          [zoom]="defaults.zoom"
          [styles]="mapOptions.styles">
   <agm-marker [latitude]="marker.lat"
-              [longitude]="marker.lng"></agm-marker>
+              [longitude]="marker.lng">
+    <agm-snazzy-info-window [isOpen]="true" [latitude]="defaults.lat"
+    [longitude]="defaults.lng" [closeWhenOthersOpen]="true">
+      <ng-template>
+        My first Snazzy Info Window!
+      </ng-template>
+    </agm-snazzy-info-window>
+  </agm-marker>
 </agm-map>
