@@ -14,29 +14,27 @@ import { CategoriesService } from './services/categories.service';
 
 import { AboutComponent } from './about/about.component';
 import { MapComponent } from './map/map.component';
+import { EventsComponent } from './events/events.component';
+import { NewsFeedComponent } from './news-feed/news-feed.component';
+import { FeedbackComponent } from './feedback/feedback.component';
 
 const appRoutes: Routes = [
-  /*{ path: 'crisis-center', component: CrisisListComponent },
-  { path: 'hero/:id',      component: HeroDetailComponent },
-  {
-    path: 'heroes',
-    component: HeroListComponent,
-    data: { title: 'Heroes List' }
-  },
-  { path: '',
-    redirectTo: '/heroes',
-    pathMatch: 'full'
-  },
-  { path: '**', component: PageNotFoundComponent }*/
   { path: '', component: MapComponent },
   { path: 'about', component: AboutComponent },
+  { path: 'events', component: EventsComponent },
+  { path: 'news-feed', component: NewsFeedComponent },
+  { path: 'feedback', component: FeedbackComponent },
+
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
     AboutComponent,
-    MapComponent
+    MapComponent,
+    EventsComponent,
+    NewsFeedComponent,
+    FeedbackComponent,
   ],
   entryComponents:[
     MapComponent
