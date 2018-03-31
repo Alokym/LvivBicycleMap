@@ -1,7 +1,7 @@
 <agm-map [ngStyle]="{ height: mobileQuery.matches ? 'calc(100vh - 56px)' : 'calc(100vh - 64px)' }"
          [latitude]="defaults.lat"
          [longitude]="defaults.lng"
-         (mapReady)="onMapReady($event)
+         (mapReady)="onMapReady($event)"
          [zoom]="defaults.zoom"
          [styles]="mapOptions.styles">
   <agm-marker [latitude]="marker.lat"
