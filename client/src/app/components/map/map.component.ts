@@ -57,4 +57,12 @@ export class MapComponent implements OnInit {
   onMapReady(map) {
       map.styles = mapStyles;
   }
+
+  onMapClick($event) {
+    this.service.suggestions.emit($event);
+  }
+
+  onMarkerClick(point) {
+    this.service.details.emit(point);
+  }
 }
