@@ -21,7 +21,7 @@ import { AppService } from './app.service';
     BrowserAnimationsModule,
     AppMaterialModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyACTUtn8dZBGcfDIQG3MMsNsXd3VVWcSys'
+      apiKey: 'AIzaSyBYGHYrVY3V7EVbHd4VZcDqMp6Tm5XfZPw'
     })
   ],
   providers: [
