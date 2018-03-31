@@ -18,13 +18,13 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '..', 'client', 'dist')));
 app.use(cors());
 
-const indexRouter = require('./routes/index');
-const pointsRouter = require('./routes/points.route');
-const categoriesRouter = require('./routes/categories.route');
+const pointsRoute = require('./routes/points.route');
+const categoriesRoute = require('./routes/categories.route');
+const feedbackRoute = require('./routes/feedback.route');
 
-app.use('/api', indexRouter);
-app.use('/api', pointsRouter);
-app.use('/api', categoriesRouter);
+app.use('/api', pointsRoute);
+app.use('/api', categoriesRoute);
+app.use('/api', feedbackRoute);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

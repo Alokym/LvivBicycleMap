@@ -3,7 +3,7 @@
 const {Types} = require('mongoose');
 const pointsModel = require('../models/geoJSON.model');
 
-async function getPoints({categories, lon, lat, radius = 100}) {
+async function getList({categories, lon, lat, radius = 100}) {
     const executor = (resolve, reject) => {
         const condition = {};
 
@@ -22,20 +22,23 @@ async function getPoints({categories, lon, lat, radius = 100}) {
             }
         }
 
-        const query = pointsModel.find(condition).lean();
+        const query = pointsModel
+            .find(condition)
+            .lean();
 
-        query.exec((error, result) => {
-            if (error) {
-                return reject(error);
-            }
+        query
+            .exec((error, result) => {
+                if (error) {
+                    return reject(error);
+                }
 
-            return resolve(result);
-        })
+                return resolve(result);
+            })
     };
 
     return new Promise(executor);
 }
 
 module.exports = {
-    getPoints
+    getList
 };
