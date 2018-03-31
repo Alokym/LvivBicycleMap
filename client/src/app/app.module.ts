@@ -17,12 +17,14 @@ import { PlacesService } from './services/places.service';
 
 import { MapComponent } from './components/map/map.component';
 import { NavListComponent } from './components/nav-list/nav-list.component';
+import { SuggestionFormComponent } from './components/suggestion-form/suggestion-form.component';
 
 import { AboutComponent } from './about/about.component';
 import { EventsComponent } from './events/events.component';
 import { NewsFeedComponent } from './news-feed/news-feed.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { MainComponent } from './main/main.component';
+
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { MainComponent } from './main/main.component';
     AboutComponent,
     EventsComponent,
     NewsFeedComponent,
-    FeedbackComponent
+    FeedbackComponent,
+    SuggestionFormComponent
   ],
   entryComponents: [
 

@@ -2,14 +2,19 @@
          [latitude]="defaults.lat"
          [longitude]="defaults.lng"
          [zoom]="defaults.zoom"
-         [styles]="mapOptions.styles">
+         [styles]="mapOptions.styles"
+         (mapClick)="showSuggestionPopup($event)">
   <agm-marker [latitude]="marker.lat"
               [longitude]="marker.lng">
-    <agm-snazzy-info-window [isOpen]="true" [latitude]="defaults.lat"
-    [longitude]="defaults.lng" [closeWhenOthersOpen]="true">
-      <ng-template>
-        My first Snazzy Info Window!
-      </ng-template>
-    </agm-snazzy-info-window>
   </agm-marker>
+  <agm-snazzy-info-window [isOpen]="isSnazzyInfoWindowOpened"
+                          [latitude]="snazzyInfoCoordinates.lat"
+                          [longitude]="snazzyInfoCoordinates.lng"
+                          [closeWhenOthersOpen]="false"
+                          [closeOnMapClick]="false"
+                          [openOnMarkerClick]="false">
+    <ng-template>
+      <app-suggestion-form></app-suggestion-form>
+    </ng-template>
+  </agm-snazzy-info-window>
 </agm-map>

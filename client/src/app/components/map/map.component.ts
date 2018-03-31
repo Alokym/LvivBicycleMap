@@ -10,6 +10,11 @@ import { MapSettings } from './map.settings';
 })
 export class MapComponent implements OnInit {
   mobileQuery: MediaQueryList;
+  isSnazzyInfoWindowOpened: boolean = false;
+  snazzyInfoCoordinates = {
+    lat: 49.8414619,
+    lng: 24.0271152,
+  };
   defaults = {
     lat: 49.8414619,
     lng: 24.0271152,
@@ -44,9 +49,13 @@ export class MapComponent implements OnInit {
       navigator.geolocation.getCurrentPosition((position) => {
         this.marker.lat = position.coords.latitude;
         this.marker.lng = position.coords.longitude;
-        console.log(position);
       });
     }
   }
 
+  showSuggestionPopup($event) {
+    console.log($event.coords);
+    this.snazzyInfoCoordinates = $event.coords;
+    this.isSnazzyInfoWindowOpened = true;
+  }
 }
