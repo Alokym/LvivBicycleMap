@@ -9,38 +9,39 @@ import { AgmCoreModule } from '@agm/core';
 import { AppMaterialModule } from './material.module';
 
 import { AppComponent } from './app.component';
-import { AppService } from './app.service';
+import { CategoriesService } from './services/categories.service';
 
-
-import { AboutComponent } from './about/about.component';
 import { MapComponent } from './components/map/map.component';
 import { NavListComponent } from './components/nav-list/nav-list.component';
 
+import { AboutComponent } from './about/about.component';
+import { EventsComponent } from './events/events.component';
+import { NewsFeedComponent } from './news-feed/news-feed.component';
+import { FeedbackComponent } from './feedback/feedback.component';
+
 const appRoutes: Routes = [
-  /*{ path: 'crisis-center', component: CrisisListComponent },
-  { path: 'hero/:id',      component: HeroDetailComponent },
-  {
-    path: 'heroes',
-    component: HeroListComponent,
-    data: { title: 'Heroes List' }
-  },
-  { path: '',
-    redirectTo: '/heroes',
-    pathMatch: 'full'
-  },
-  { path: '**', component: PageNotFoundComponent }*/
   { path: '', component: MapComponent },
   { path: 'about', component: AboutComponent },
+  { path: 'events', component: EventsComponent },
+  { path: 'news-feed', component: NewsFeedComponent },
+  { path: 'feedback', component: FeedbackComponent },
+
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
     AboutComponent,
+    EventsComponent,
+    NewsFeedComponent,
     MapComponent,
     NavListComponent
-],
+  ],
   entryComponents: [
+    NavListComponent,
+    EventsComponent,
+    NewsFeedComponent,
+    FeedbackComponent,
     MapComponent
   ],
   imports: [
@@ -57,7 +58,7 @@ const appRoutes: Routes = [
     )
   ],
   providers: [
-    AppService
+    CategoriesService
   ],
   bootstrap: [AppComponent]
 })

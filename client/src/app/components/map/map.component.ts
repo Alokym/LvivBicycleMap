@@ -23,6 +23,16 @@ export class MapComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.setLocation();
+  }
+
+  setLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.lat = position.coords.latitude;
+        this.lng = position.coords.longitude;
+      });
+    }
   }
 
 }
