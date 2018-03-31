@@ -11,4 +11,3 @@ const converted = tj.kml(kml);
 
 const convertedWithStyles = tj.kml(kml, { styles: true });
 
-console.log('1');
