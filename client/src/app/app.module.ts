@@ -13,28 +13,33 @@ import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
 import { AppMaterialModule } from './material.module';
 
 import { AppComponent } from './app.component';
-import { PlacesService } from './services/places.service';
+import { PointsService } from './services/points.service';
 
 import { MapComponent } from './components/map/map.component';
 import { NavListComponent } from './components/nav-list/nav-list.component';
 
 import { AboutComponent } from './about/about.component';
+import { NotificationCenterComponent } from './notification-center/notification-center.component';
 import { EventsComponent } from './events/events.component';
 import { NewsFeedComponent } from './news-feed/news-feed.component';
 import { FeedbackComponent } from './feedback/feedback.component';
-import { MainComponent } from './main/main.component';
+import { MapService } from './components/map/map.service';
+import { CategoriesComponent } from './categories/categories.component';
+import { CustomRouteComponent } from './custom-route/custom-route.component';
 
 @NgModule({
   declarations: [
     MapComponent,
     NavListComponent,
 
-    MainComponent,
     AppComponent,
     AboutComponent,
     EventsComponent,
     NewsFeedComponent,
-    FeedbackComponent
+    FeedbackComponent,
+    NotificationCenterComponent,
+    CategoriesComponent,
+    CustomRouteComponent
   ],
   entryComponents: [
 
@@ -56,7 +61,8 @@ import { MainComponent } from './main/main.component';
     )
   ],
   providers: [
-    PlacesService
+    MapService,
+    PointsService
   ],
   bootstrap: [AppComponent]
 })

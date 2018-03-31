@@ -1,0 +1,11 @@
+<div class="notification-center">
+    <button mat-button
+            class="alert-button"
+            [matMenuTriggerFor]="appMenu">
+        <mat-icon>add_alert</mat-icon>
+    </button>
+    <mat-menu #appMenu="matMenu">
+        <button mat-menu-item
+                *ngFor="let suggestion of suggestions | async">{{suggestion.description}}</button>
+    </mat-menu>
+</div>

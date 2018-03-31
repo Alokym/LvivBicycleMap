@@ -6,6 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./news-feed.component.scss']
 })
 export class NewsFeedComponent implements OnInit {
+  newsItems = [
+    {author: {}},
+    {},
+    {},
+    {author: {}}
+  ];
 
   constructor() { }
 
