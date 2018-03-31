@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
-export class CategoriesService {
+export class PlacesService {
   constructor(
     private http: HttpClient
   ) { }
