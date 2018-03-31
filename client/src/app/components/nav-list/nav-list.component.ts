@@ -6,6 +6,7 @@ import {
   animate,
   transition
 } from '@angular/animations';
+import { CustomRouteService } from '../../custom-route/custom-route.service';
 
 @Component({
   selector: 'app-nav-list',
@@ -26,6 +27,7 @@ import {
 })
 export class NavListComponent implements OnInit {
   public menuState = 'left';
+  public activeSide = '';
 
   public categories = [
     {name: 'Cat 1', enabled: false},
@@ -34,16 +36,27 @@ export class NavListComponent implements OnInit {
     {name: 'Cat 4', enabled: false},
   ];
 
-  constructor() { }
+  public points = [];
+
+  constructor(
+    private customRouteService: CustomRouteService
+  ) { }
 
   ngOnInit() {
+    this.points = this.customRouteService.points;
   }
 
-  slide() {
+  addPoint() {
+    this.customRouteService.addPoint({});
+  }
+
+  slide(name) {
+    this.activeSide = name;
     this.menuState = 'right';
   }
 
   slideBack() {
+    this.activeSide = '';
     this.menuState = 'left';
   }
 }
