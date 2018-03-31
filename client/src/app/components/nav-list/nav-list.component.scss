@@ -24,6 +24,11 @@
       .mat-checkbox {
         pointer-events: none;
       }
+
+      .active-link {
+        background-color: #5ab53f;
+        color: #fff;
+      }
     }
   }
 }
