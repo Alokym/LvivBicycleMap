@@ -7,6 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutComponent implements OnInit {
 
+  message = {
+    from: 'yo',
+    subject: 'test',
+    content: 'content'
+  };
   constructor() { }
 
   ngOnInit() {
