@@ -3,8 +3,18 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/points', (req, res) => {
+const {getPoints} = require('../services/points.service');
 
+router.get('/points', async (req, res) => {
+    try {
+        const points = await getPoints();
+
+        return res.json(points);
+    } catch (error) {
+        res.status(400);
+
+        return res.end();
+    }
 });
 
 module.exports = router;
