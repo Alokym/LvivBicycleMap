@@ -13,9 +13,10 @@ import { AppMaterialModule } from './material.module';
 import { AppComponent } from './app.component';
 import { CategoriesService } from './services/categories.service';
 
+import { MapComponent } from './components/map/map.component';
+import { NavListComponent } from './components/nav-list/nav-list.component';
 
 import { AboutComponent } from './about/about.component';
-import { MapComponent } from './map/map.component';
 import { EventsComponent } from './events/events.component';
 import { NewsFeedComponent } from './news-feed/news-feed.component';
 import { FeedbackComponent } from './feedback/feedback.component';
@@ -24,12 +25,16 @@ import { FeedbackComponent } from './feedback/feedback.component';
   declarations: [
     AppComponent,
     AboutComponent,
+    EventsComponent,
+    NewsFeedComponent,
     MapComponent,
+    NavListComponent
+  ],
+  entryComponents: [
+    NavListComponent,
     EventsComponent,
     NewsFeedComponent,
     FeedbackComponent,
-  ],
-  entryComponents:[
     MapComponent
   ],
   imports: [
