@@ -19,6 +19,7 @@ import { MapComponent } from './components/map/map.component';
 import { NavListComponent } from './components/nav-list/nav-list.component';
 
 import { AboutComponent } from './about/about.component';
+import { NotificationCenterComponent } from './notification-center/notification-center.component';
 import { EventsComponent } from './events/events.component';
 import { NewsFeedComponent } from './news-feed/news-feed.component';
 import { FeedbackComponent } from './feedback/feedback.component';
@@ -34,7 +35,8 @@ import { MainComponent } from './main/main.component';
     AboutComponent,
     EventsComponent,
     NewsFeedComponent,
-    FeedbackComponent
+    FeedbackComponent,
+    NotificationCenterComponent,
   ],
   entryComponents: [
 
