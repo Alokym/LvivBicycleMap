@@ -13,6 +13,7 @@
   <mat-sidenav-container class="example-sidenav-container"
                          [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
     <mat-sidenav #snav
+                 opened="true"
                  [mode]="mobileQuery.matches ? 'over' : 'side'"
                  [fixedInViewport]="mobileQuery.matches"
                  fixedTopGap="56">
