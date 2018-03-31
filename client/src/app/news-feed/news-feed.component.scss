@@ -1,0 +1,14 @@
+:host {
+  .mdl-cell {
+    margin: 15px auto;
+
+    .app-card {
+      // width: 512px;
+    }
+
+    .app-header-image {
+      background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+      background-size: cover;
+    }
+  }
+}
