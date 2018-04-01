@@ -39,15 +39,15 @@ export class PointsService {
   }
 
   postSuggestion(place) {
-    return this.http.post('/api/points/suggestions', place);
+    return this.http.post('/api/points/suggestions', place).subscribe();
   }
 
   approveSuggestion({ id }) {
-    return this.http.put(`/api/points/suggestions/${id}/approval`, {});
+    return this.http.put(`/api/points/suggestions/${id}/approval`, {}).subscribe();
   }
 
   rejectSuggestion({ id }) {
-    return this.http.put(`/api/points/suggestions/${id}/rejection`, {});
+    return this.http.put(`/api/points/suggestions/${id}/rejection`, {}).subscribe();
   }
 
   reportError({ coords, description, suggestedCoords }) {
