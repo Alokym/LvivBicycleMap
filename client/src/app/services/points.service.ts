@@ -21,31 +21,30 @@ export class PointsService {
     return this.http.get(`/api/points`, {
       params: {
         categories: categoriesCsv,
-        position
+        position,
       }
     });
   }
 
   loadSuggestions() {
-    // return this.http.get('/api/points/suggestions');
-    this.suggestions = of([
-      {
-        category: 'parking',
-        description: 'volodymyra velykogo str',
-      }
-    ]);
+    this.suggestions = this.http.get<Array<any>>('/api/points/suggestions').map(x => x.map(y => ({
+      name: y.feature.properties.name,
+      description: y.feature.properties.description,
+      lng: y.feature.coordinates[ 0 ],
+      lat: y.feature.coordinates[ 0 ],
+    })));
   }
 
   postSuggestion(place) {
-    return this.http.post('/api/points/suggestions', place);
+    return this.http.post('/api/points/suggestions', place).subscribe();
   }
 
   approveSuggestion({ id }) {
-    return this.http.put(`/api/points/suggestions/${id}/approval`, {});
+    return this.http.put(`/api/points/suggestions/${id}/approval`, {}).subscribe();
   }
 
   rejectSuggestion({ id }) {
-    return this.http.put(`/api/points/suggestions/${id}/rejection`, {});
+    return this.http.put(`/api/points/suggestions/${id}/rejection`, {}).subscribe();
   }
 
   reportError({ coords, description, suggestedCoords }) {
