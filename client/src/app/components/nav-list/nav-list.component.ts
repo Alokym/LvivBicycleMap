@@ -63,6 +63,16 @@ export class NavListComponent implements OnInit {
     this.customRouteService.addPoint({});
   }
 
+  buildRoute() {
+    this.mapService.drawRoute({
+      lat: 49.7996413,
+      lng: 24.0158005
+    }, {
+      lat: 49.7956371,
+      lng: 24.0612462
+    });
+  }
+
   slide(name) {
     this.activeSide = name;
     this.menuState = 'right';

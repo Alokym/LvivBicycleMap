@@ -28,6 +28,7 @@ export class MapComponent implements OnInit {
   };
 
   points = [];
+  map = null;
 
   private _mobileQueryListener: () => void;
 
@@ -59,7 +60,8 @@ export class MapComponent implements OnInit {
   }
 
   onMapReady(map) {
-      map.styles = mapStyles;
+      this.map = map;
+      this.service.map = map;
   }
 
   onMapClick($event) {

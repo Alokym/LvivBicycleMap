@@ -32,12 +32,14 @@
       <mat-icon>keyboard_arrow_left</mat-icon>
       <span>Back</span>
     </a>
+
     <mat-list role="list" *ngIf="activeSide === 'categories'">
       <mat-list-item role="listitem" *ngFor="let cat of categories;"
         (click)="selectCategory(cat)">
         <mat-checkbox [(ngModel)]="cat.enabled">{{ cat.name }}</mat-checkbox>
       </mat-list-item>
     </mat-list>
+
     <mat-list role="list" *ngIf="activeSide === 'custom-route'">
       <mat-list-item role="listitem" class="cursor-default" *ngFor="let point of points; let i = index;">
         <mat-form-field class="input-form-field">
@@ -50,6 +52,10 @@
     </mat-list>
     <div style="text-align: center" *ngIf="activeSide === 'custom-route'">
       <button mat-raised-button color="primary" (click)="addPoint()">Add a stop</button>
+      <button mat-raised-button color="primary" (click)="buildRoute()">Build route</button>
+      <div *ngIf="route">
+        <p>Distance: {{route.distance}}</p>
+      </div>
     </div>
   </div>
 </div>
