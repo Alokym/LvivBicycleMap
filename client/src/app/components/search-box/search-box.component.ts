@@ -33,15 +33,19 @@ export class SearchBoxComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.mapsApiLoader.load().then(() => {
-      const autocompleteFrom = new google.maps.places.Autocomplete(this.searchElement.nativeElement, {
-        types: ['address']
-      });
+      const autocompleteFrom = new google.maps.places.Autocomplete(this.searchElement.nativeElement, { });
       autocompleteFrom.addListener('place_changed', () => {
         const place = autocompleteFrom.getPlace();
         const location = place.geometry.location;
         this.point = {name: place.formatted_address, location: {lng: location.lng(), lat: location.lat()} };
       });
     });
+  }
+
+  onKeyPress(data) {
+    // if (data && data.target) {
+    //     this.point = { name: data.target.value }
+    // }
   }
 
 }

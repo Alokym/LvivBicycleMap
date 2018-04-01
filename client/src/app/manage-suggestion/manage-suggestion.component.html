@@ -9,21 +9,27 @@
         <mat-nav-list>
             <mat-card>
                 <mat-card-title>
-                    <span>Suggested Place</span>
+                    <h5>Suggested Place</h5>
                 </mat-card-title>
                 <mat-card-content>
                     <h6>Title</h6>
-                    <div>{{sugg.name}}</div>
-                    <h6>Label</h6>
-                    <div>{{sugg.description}}</div>
+                    <div class="data">{{sugg.name}}</div>
+                    <h6>Description</h6>
+                    <div class="data">{{sugg.description}}</div>
                     <h6>Category</h6>
-                    <div>{{sugg.category}}</div>
+                    <div class="data">{{sugg.category}}</div>
                 </mat-card-content>
-                <mat-card-actions *ngIf="!approved">
+                <mat-card-actions *ngIf="state === 'pending'">
                     <button mat-button
                             (click)="approve()">Approve</button>
                     <button mat-button
                             (click)="reject()">Reject</button>
+                </mat-card-actions>
+                <mat-card-actions *ngIf="state === 'approved'">
+                    <span class="approved">Approved :)</span>
+                </mat-card-actions>
+                <mat-card-actions *ngIf="state === 'rejected'">
+                    <span class="rejected">Rejected :(</span>
                 </mat-card-actions>
             </mat-card>
         </mat-nav-list>

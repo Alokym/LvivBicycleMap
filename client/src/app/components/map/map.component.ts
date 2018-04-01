@@ -4,7 +4,8 @@ import { MediaMatcher } from '@angular/cdk/layout';
 import { mapStyles } from './map.styles';
 
 import { MapSettings } from './map.settings';
-import {MapPoint} from './map-point';
+import {MapPoint, SelectedPoint} from './map-point';
+import {MapRoute} from "./map.route.interface";
 
 @Component({
   selector: 'app-map',
@@ -12,6 +13,7 @@ import {MapPoint} from './map-point';
   styleUrls: ['./map.component.scss'],
 })
 export class MapComponent implements OnInit {
+  suggestedPoint: SelectedPoint;
   mobileQuery: MediaQueryList;
   defaults = {
     lat: 49.8414619,
@@ -28,14 +30,15 @@ export class MapComponent implements OnInit {
   };
 
   points = [];
+  waypoints = [];
 
   private _mobileQueryListener: () => void;
+  private route: MapRoute;
 
   constructor(
     private changeDetectorRef: ChangeDetectorRef,
     private media: MediaMatcher,
     private service: MapService,
-    //private suggestedPoint: MapPoint,
   ) {
     this.mobileQuery = this.media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => this.changeDetectorRef.detectChanges();
@@ -44,9 +47,27 @@ export class MapComponent implements OnInit {
 
   ngOnInit() {
     this.setLocation();
+    this.points = this.service.points;
+
     this.service.onDraw.subscribe(res => {
       this.points = res;
     });
+
+    this.service.center.subscribe(res => {
+      this.defaults.lat = res.lat;
+      this.defaults.lng = res.lng;
+      console.log(this.defaults)
+    });
+
+    this.service.onDrawPath.subscribe(res => {
+      this.waypoints = res;
+    });
+
+    this.service.suggestions.subscribe(point => {
+      this.suggestedPoint = point;
+    });
+
+    this.route = this.service.route;
   }
 
   setLocation() {
@@ -59,16 +80,15 @@ export class MapComponent implements OnInit {
   }
 
   onMapReady(map) {
-      map.styles = mapStyles;
+      this.service.map = map;
   }
 
   onMapClick($event) {
     this.service.suggestions.emit($event);
-    //this.suggestedPoint = $event.coords;
+    this.suggestedPoint = $event.coords;
   }
 
   onMarkerClick(point) {
-    console.log(point);
     this.service.details.emit(point);
   }
 }

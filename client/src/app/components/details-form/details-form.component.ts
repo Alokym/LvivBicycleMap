@@ -7,8 +7,8 @@ import {MapService} from '../map/map.service';
   styleUrls: ['./details-form.component.scss']
 })
 export class DetailsFormComponent implements OnInit {
-  title = '';
-  label = '';
+  name = '';
+  description = '';
 
   constructor(
     private mapService: MapService,
@@ -20,7 +20,9 @@ export class DetailsFormComponent implements OnInit {
   }
 
   updateDetails() {
-    this.title = this.mapService.selectedPoint.title;
-    this.label = this.mapService.selectedPoint.label;
+    const point = <any>this.mapService.selectedPoint;
+    const details = JSON.parse(point.details || '');
+    this.name = details.name;
+    this.description = details.desc;
   }
 }

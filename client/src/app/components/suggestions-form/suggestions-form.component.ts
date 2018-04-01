@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {PointsService} from "../../services/points.service";
 import {MapPointSuggestion} from './map-point-suggestion';
+import {MapService} from "../map/map.service";
 
 @Component({
   selector: 'app-suggestions-form',
@@ -9,15 +10,19 @@ import {MapPointSuggestion} from './map-point-suggestion';
 })
 export class SuggestionsFormComponent implements OnInit {
 
-  public categories: Array<string> = ['asdasd', 'rwerwer'];
+  public categories: Array<any> = [];
   public suggestion: MapPointSuggestion = {title: '', category: '', description: ''};
 
-  constructor() {
 
-  }
+  constructor(
+    public pointsService: PointsService,
+    private mapService: MapService,
+  ) {}
 
   ngOnInit() {
-
+    this.pointsService.categories.subscribe((categories) => {
+      this.categories = categories;
+    });
   }
 
   onSubmit() {
@@ -25,6 +30,27 @@ export class SuggestionsFormComponent implements OnInit {
       return;
     }
 
+    this.pointsService.postSuggestion({
+      feature: {
+        type: 'Feature',
+        geometry: {
+          type: 'Point',
+          coordinates: [
+            this.mapService.suggestedPoint.lng,
+            this.mapService.suggestedPoint.lat
+          ]
+        },
+        properties: {
+          name: this.suggestion.title,
+          description: this.suggestion.description,
+          category: {
+            name: this.categories.filter((cat) => cat._id === this.suggestion.category)[0].name,
+            id: this.suggestion.category
+          }
+        }
+      }
+    });
 
+    this.mapService.suggestions.emit(null);
   }
 }

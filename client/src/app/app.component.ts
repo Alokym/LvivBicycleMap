@@ -30,11 +30,6 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    // this.service.getTest().subscribe();
 
-    // example of drawing
-    this.mapService.drawPoints([
-      {lat: 49.8392533, lng: 24.0228793, info: 'Some description'}
-    ]);
   }
 }
