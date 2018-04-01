@@ -99,7 +99,7 @@ export class NavListComponent implements OnInit {
         });
       };
       Promise.all(modified.map(point => geocodePromise(point)))
-        .then((data) => data.forEach(result =>
+        .then((data: any[]) => data.forEach(result =>
           Object.assign(result.point,
             {
               value: {
