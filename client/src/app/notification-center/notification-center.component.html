@@ -1,13 +1,13 @@
-<div class="notification-center" *ngIf="anySuggestions | async">
+<div class="notification-center">
     <mat-menu #appMenu="matMenu">
         <button mat-menu-item
             (click)="manageSuggestion(suggestion)"
-             *ngFor="let suggestion of suggestions | async">
+             *ngFor="let suggestion of suggestions">
             <span>{{suggestion.name}}</span>
         </button>
     </mat-menu>
     <button mat-icon-button class="alert-button" [matMenuTriggerFor]="appMenu">
         <mat-icon>add_alert</mat-icon>
     </button>
-    <div class="suggestion-counter">{{ getSuggestionsAmount() }}</div>
+    <div *ngIf="suggestions.length" class="suggestion-counter">{{ suggestions.length }}</div>
 </div>

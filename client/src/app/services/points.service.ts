@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class PointsService {
@@ -32,19 +33,20 @@ export class PointsService {
   }
 
   loadSuggestions() {
-    this.suggestionsAmount = 0;
-    this.suggestions = this.http.get<Array<any>>('/api/points/suggestions?status=pending').map(x => x.map(y => {
-      this.suggestionsAmount++;
-
-      return {
-        id: y._id,
-        name: y.feature.properties.name,
-        description: y.feature.properties.description,
-        category: y.feature.properties.category.name,
-        lng: y.feature.geometry.coordinates[ 0 ],
-        lat: y.feature.geometry.coordinates[ 1 ],
-      };
-    }));
+    return this.http.get<Array<any>>('/api/points/suggestions?status=pending')
+      .pipe(
+        map(x => x.map(y => {
+          return {
+            id: y._id,
+            name: y.feature.properties.name,
+            description: y.feature.properties.description,
+            category: y.feature.properties.category.name,
+            lng: y.feature.geometry.coordinates[ 0 ],
+            lat: y.feature.geometry.coordinates[ 1 ],
+          };
+        })
+      )
+    );
   }
 
   postSuggestion(place) {

@@ -11,8 +11,7 @@ import 'rxjs/add/operator/map';
     styleUrls: ['./notification-center.component.scss']
 })
 export class NotificationCenterComponent implements OnInit {
-    suggestions: Observable<any>;
-    anySuggestions: Observable<boolean>;
+    suggestions = [];
 
     constructor(
         private service: PointsService,
@@ -20,13 +19,9 @@ export class NotificationCenterComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        this.service.loadSuggestions();
-        this.suggestions = this.service.suggestions;
-        this.anySuggestions = this.service.suggestions.map(x => x.length > 0);
-    }
-
-    getSuggestionsAmount() {
-        return this.service.getSuggestionsAmount();
+        this.service.loadSuggestions().subscribe(res => {
+            this.suggestions = res;
+        });
     }
 
     manageSuggestion(suggestion) {
