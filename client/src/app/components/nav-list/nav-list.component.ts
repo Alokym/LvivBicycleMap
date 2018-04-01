@@ -55,8 +55,8 @@ export class NavListComponent implements OnInit {
         return {
           _id: item._id,
           name: item.name.split('|')[0],
-          beName: icon.beName,
-          icon: icon.name
+          beName: icon ? icon.beName : '',
+          icon: icon ? icon.name : ''
         };
       });
     });
