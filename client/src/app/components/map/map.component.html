@@ -6,40 +6,30 @@
          [zoom]="defaults.zoom"
          [styles]="mapOptions.styles">
 
-  <!-- <agm-circle *ngFor="let point of points;"
-              [latitude]="point.lat"
-              [title]="'test'"
-              [longitude]="point.lng"
-              [fillColor]="'#000'"
-              [strokeColor]="'#000'"
-              [radius]="10"
-              (markerClick)="onMarkerClick(point)">
-  </agm-circle> -->
 
   <agm-marker *ngFor="let point of points;"
               [latitude]="point.lat"
+              [longitude]="point.lng"
               [title]="point.title"
-              [iconUrl]="{
-                  url: point.icon,
-                  color: '#CC0000',
-                  scaledSize: {
-                    height: 20,
-                    width: 20
-                  }
-                }"
               [label]="{
-                color: '#CC0000',
+                color: '#fff',
                 fontFamily: '',
                 fontSize: '14px',
                 fontWeight: 'bold',
                 text: point.label
               }"
-              [longitude]="point.lng"
+              [iconUrl]="point.icon ? {
+                  url: point.icon.url,
+                  scaledSize: {
+                    height: point.icon.size, width: point.icon.size
+                  }
+                } : {}"
               (markerClick)="onMarkerClick(point)">
+
   </agm-marker>
 
-  <agm-marker *ngIf="suggestedPoint"
+  <!-- <agm-marker *ngIf="suggestedPoint"
               [latitude]="suggestedPoint.lat"
               [longitude]="suggestedPoint.lng">
-  </agm-marker>
+  </agm-marker> -->
 </agm-map>

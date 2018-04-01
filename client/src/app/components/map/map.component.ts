@@ -34,7 +34,6 @@ export class MapComponent implements OnInit {
     private changeDetectorRef: ChangeDetectorRef,
     private media: MediaMatcher,
     private service: MapService,
-
   ) {
     this.mobileQuery = this.media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => this.changeDetectorRef.detectChanges();
@@ -43,6 +42,7 @@ export class MapComponent implements OnInit {
 
   ngOnInit() {
     this.setLocation();
+    this.points = this.service.points;
     this.service.onDraw.subscribe(res => {
       this.points = res;
     });
@@ -59,15 +59,5 @@ export class MapComponent implements OnInit {
 
   onMapReady(map) {
       map.styles = mapStyles;
-  }
-
-  onMapClick($event) {
-    this.service.suggestions.emit($event);
-    //this.suggestedPoint = $event.coords;
-  }
-
-  onMarkerClick(point) {
-    console.log(point);
-    this.service.details.emit(point);
   }
 }
