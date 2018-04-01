@@ -5,6 +5,7 @@ import { mapStyles } from './map.styles';
 
 import { MapSettings } from './map.settings';
 import {MapPoint, SelectedPoint} from './map-point';
+import {MapRoute} from "./map.route.interface";
 
 @Component({
   selector: 'app-map',
@@ -32,6 +33,7 @@ export class MapComponent implements OnInit {
   waypoints = [];
 
   private _mobileQueryListener: () => void;
+  private route: MapRoute;
 
   constructor(
     private changeDetectorRef: ChangeDetectorRef,
@@ -64,6 +66,8 @@ export class MapComponent implements OnInit {
     this.service.suggestions.subscribe(point => {
       this.suggestedPoint = point;
     });
+
+    this.route = this.service.route;
   }
 
   setLocation() {
@@ -76,7 +80,7 @@ export class MapComponent implements OnInit {
   }
 
   onMapReady(map) {
-      map.styles = mapStyles;
+      this.service.map = map;
   }
 
   onMapClick($event) {
