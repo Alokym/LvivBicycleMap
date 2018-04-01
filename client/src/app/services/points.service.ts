@@ -5,6 +5,7 @@ import { of } from 'rxjs/observable/of';
 
 @Injectable()
 export class PointsService {
+  public suggestionsAmount;
   public suggestions;
   public categories;
 
@@ -26,15 +27,24 @@ export class PointsService {
     });
   }
 
+  getSuggestionsAmount() {
+    return this.suggestionsAmount;
+  }
+
   loadSuggestions() {
-    this.suggestions = this.http.get<Array<any>>('/api/points/suggestions?status=pending').map(x => x.map(y => ({
-      id: y._id,
-      name: y.feature.properties.name,
-      description: y.feature.properties.description,
-      category: y.feature.properties.category.name,
-      lng: y.feature.geometry.coordinates[ 0 ],
-      lat: y.feature.geometry.coordinates[ 1 ],
-    })));
+    this.suggestionsAmount = 0;
+    this.suggestions = this.http.get<Array<any>>('/api/points/suggestions?status=pending').map(x => x.map(y => {
+      this.suggestionsAmount++;
+
+      return {
+        id: y._id,
+        name: y.feature.properties.name,
+        description: y.feature.properties.description,
+        category: y.feature.properties.category.name,
+        lng: y.feature.geometry.coordinates[ 0 ],
+        lat: y.feature.geometry.coordinates[ 1 ],
+      };
+    }));
   }
 
   postSuggestion(place) {

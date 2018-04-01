@@ -8,6 +8,7 @@ import 'rxjs/add/operator/map';
 @Component({
     selector: 'app-notification-center',
     templateUrl: './notification-center.component.html',
+    styleUrls: ['./notification-center.component.scss']
 })
 export class NotificationCenterComponent implements OnInit {
     suggestions: Observable<any>;
@@ -22,6 +23,10 @@ export class NotificationCenterComponent implements OnInit {
         this.service.loadSuggestions();
         this.suggestions = this.service.suggestions;
         this.anySuggestions = this.service.suggestions.map(x => x.length > 0);
+    }
+
+    getSuggestionsAmount() {
+        return this.service.getSuggestionsAmount();
     }
 
     manageSuggestion(suggestion) {
