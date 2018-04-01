@@ -1,6 +1,7 @@
 :host {
   mat-sidenav {
     display: flex;
+    box-shadow: 2px -1px 10px 2px #787878;
   }
 
   .mat-nav-list {
@@ -13,6 +14,7 @@
 
     .data {
       margin-left: 10px;
+      max-width: 30vw;
     }
 
     .mat-card {
