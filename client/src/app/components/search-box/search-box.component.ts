@@ -33,9 +33,7 @@ export class SearchBoxComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.mapsApiLoader.load().then(() => {
-      const autocompleteFrom = new google.maps.places.Autocomplete(this.searchElement.nativeElement, {
-        types: ['address']
-      });
+      const autocompleteFrom = new google.maps.places.Autocomplete(this.searchElement.nativeElement, { });
       autocompleteFrom.addListener('place_changed', () => {
         const place = autocompleteFrom.getPlace();
         const location = place.geometry.location;
