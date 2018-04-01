@@ -1,5 +1,6 @@
 'use strict';
 
+const {Types} = require('mongoose');
 const SuggestionModel = require('../models/suggestion.model');
 
 async function getList({status}) {
@@ -41,8 +42,13 @@ async function approve(id) {
                 return reject(error);
             }
 
+            if(suggestion.status === 'approved') {
+                return reject(new Error('You can\'t approve same suggestion twice.'))
+            }
+
             suggestion.status = 'approved';
             suggestion.updated = Date.now();
+            suggestion.feature.properties.category.id = Types.ObjectId(suggestion.feature.properties.category.id);
 
             suggestion
                 .save()
