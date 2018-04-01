@@ -44,6 +44,7 @@ export class CategoriesService {
       lng: geo.coordinates[0],
       label: pin.label,
       title: info.description,
+      details: JSON.stringify({ name: info.name, desc: info.description}),
       icon: pin.icon
     };
   }
