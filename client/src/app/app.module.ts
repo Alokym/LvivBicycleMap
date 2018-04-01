@@ -17,6 +17,7 @@ import { PointsService } from './services/points.service';
 
 import { MapComponent } from './components/map/map.component';
 import { NavListComponent } from './components/nav-list/nav-list.component';
+import { SearchBoxComponent } from './components/search-box/search-box.component';
 
 import { AboutComponent } from './about/about.component';
 import { NotificationCenterComponent } from './notification-center/notification-center.component';
@@ -36,6 +37,7 @@ import { ManageSuggestionsComponent } from './manage-suggestion/manage-suggestio
   declarations: [
     MapComponent,
     NavListComponent,
+    SearchBoxComponent,
 
     AppComponent,
     AboutComponent,
