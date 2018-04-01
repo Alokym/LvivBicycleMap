@@ -17,8 +17,8 @@ export class MapService {
     });
 
     this.suggestions.subscribe((point) => {
-      this.suggestedPoint = point.coords;
-    })
+        this.suggestedPoint = point ? point.coords: null
+    });
   }
 
   drawPoints(points) {
