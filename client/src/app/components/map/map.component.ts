@@ -65,4 +65,8 @@ export class MapComponent implements OnInit {
   onMarkerClick(point) {
 
   }
+
+  onMapClick() {
+    
+  }
 }
