@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
+import { Feedback } from '../feedback/feedback';
 
 @Injectable()
 export class FeedbackService {
@@ -9,14 +10,14 @@ export class FeedbackService {
   ) { }
 
   getComments() {
-    return this.http.get('/api/comments');
+    return this.http.get('/api/feedback');
   }
 
-  postComment(comment) {
-    return this.http.post('/api/comments', comment);
+  postComment(feedback: Feedback) {
+    return this.http.post('/api/feedback', feedback);
   }
 
   archiveComment({ id }) {
-    return this.http.put(`/api/comments/${id}`, { archived: true });
+    return this.http.put(`/api/feedback/${id}`, { archived: true });
   }
 }
