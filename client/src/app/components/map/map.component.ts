@@ -1,9 +1,10 @@
 import { MapService } from './map.service';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
-import { mapStyles } from "./map.styles";
+import { mapStyles } from './map.styles';
 
 import { MapSettings } from './map.settings';
+import {MapPoint} from './map-point';
 
 @Component({
   selector: 'app-map',
@@ -34,7 +35,7 @@ export class MapComponent implements OnInit {
     private changeDetectorRef: ChangeDetectorRef,
     private media: MediaMatcher,
     private service: MapService,
-
+    private suggestedPoint: MapPoint,
   ) {
     this.mobileQuery = this.media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => this.changeDetectorRef.detectChanges();
