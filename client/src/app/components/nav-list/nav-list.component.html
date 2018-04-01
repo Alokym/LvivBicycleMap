@@ -39,13 +39,11 @@
       </mat-list-item>
     </mat-list>
     <mat-list role="list" *ngIf="activeSide === 'custom-route'">
+    <div style="text-align: center">
+      <button mat-raised-button color="primary" (click)="search()">Search</button>
+    </div>
       <mat-list-item role="listitem" class="cursor-default" *ngFor="let point of points; let i = index;">
-        <mat-form-field class="input-form-field">
-          <input matInput type="text" placeholder="{{ i === 0 ? 'From' : i === 1 ? 'To' : 'Then to' }}" [(ngModel)]="point.value"/>
-          <button mat-button *ngIf="point.value" matSuffix mat-icon-button aria-label="Clear" (click)="point.value=''">
-            <mat-icon>close</mat-icon>
-          </button>
-        </mat-form-field>
+        <app-search-box [(point)]="point.value" [placeholder]="i === 0 ? 'From' : i === 1 ? 'To' : 'Then to'"></app-search-box>
       </mat-list-item>
     </mat-list>
     <div style="text-align: center" *ngIf="activeSide === 'custom-route'">

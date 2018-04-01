@@ -10,14 +10,14 @@ export class FeedbackService {
   ) { }
 
   getComments() {
-    return this.http.get('/api/comments');
+    return this.http.get('/api/feedback');
   }
 
-  postComment(comment: Feedback) {
-    return this.http.post('/api/comments', comment);
+  postComment(feedback: Feedback) {
+    return this.http.post('/api/feedback', feedback);
   }
 
   archiveComment({ id }) {
-    return this.http.put(`/api/comments/${id}`, { archived: true });
+    return this.http.put(`/api/feedback/${id}`, { archived: true });
   }
 }

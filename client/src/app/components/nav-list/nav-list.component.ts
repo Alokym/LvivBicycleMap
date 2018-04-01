@@ -45,8 +45,9 @@ export class NavListComponent implements OnInit {
 
   ngOnInit() {
     this.points = this.customRouteService.points;
+    this.pointsService.loadData();
 
-    this.pointsService.getCategories().subscribe((res: any) => {
+    this.pointsService.categories.subscribe((res: any) => {
       this.categories = res.map(item => ({_id: item._id, name: item.name.split('|')[0]}));
     });
   }
@@ -60,7 +61,11 @@ export class NavListComponent implements OnInit {
   }
 
   addPoint() {
-    this.customRouteService.addPoint({});
+    this.customRouteService.addPoint({value: {}});
+  }
+
+  search() {
+    console.log(this.points);
   }
 
   slide(name) {

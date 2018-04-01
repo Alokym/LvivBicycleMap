@@ -17,6 +17,7 @@ import { PointsService } from './services/points.service';
 
 import { MapComponent } from './components/map/map.component';
 import { NavListComponent } from './components/nav-list/nav-list.component';
+import { SearchBoxComponent } from './components/search-box/search-box.component';
 
 import { AboutComponent } from './about/about.component';
 import { NotificationCenterComponent } from './notification-center/notification-center.component';
@@ -30,11 +31,13 @@ import { CustomRouteService } from './custom-route/custom-route.service';
 import { CategoriesService } from './categories/categories.service';
 import { SuggestionsFormComponent } from './components/suggestions-form/suggestions-form.component';
 import { DetailsFormComponent } from './components/details-form/details-form.component';
+import { ManageSuggestionsComponent } from './manage-suggestion/manage-suggestion.component';
 
 @NgModule({
   declarations: [
     MapComponent,
     NavListComponent,
+    SearchBoxComponent,
 
     AppComponent,
     AboutComponent,
@@ -46,6 +49,7 @@ import { DetailsFormComponent } from './components/details-form/details-form.com
     CustomRouteComponent,
     SuggestionsFormComponent,
     DetailsFormComponent,
+    ManageSuggestionsComponent,
   ],
   entryComponents: [
 
