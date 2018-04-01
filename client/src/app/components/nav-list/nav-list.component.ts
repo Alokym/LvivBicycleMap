@@ -50,6 +50,10 @@ export class NavListComponent implements OnInit {
     this.customRouteService.addPoint({});
   }
 
+  search() {
+    console.log(this.points);
+  }
+
   slide(name) {
     this.activeSide = name;
     this.menuState = 'right';
