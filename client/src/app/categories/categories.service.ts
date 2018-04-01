@@ -10,26 +10,50 @@ export class CategoriesService {
     private mapService: MapService
   ) { }
 
-  drawCategoris(categories) {
+  drawCategories(categories) {
     if (categories.length) {
       this.pointsService.getPoints(categories.map((category) => category._id), {})
-        .subscribe(points => {
+        .subscribe(res => {
+          const paths = this._getPaths(res);
+          const points = this._getPoints(res);
+
           this.mapService.drawPoints(points.map((point) => {
-            const geo = point.feature.geometry.coordinates;
-            const info = point.feature.properties;
-            const pin = this._getPinInfo(info.category.id);
-            return {
-              lat: geo[1],
-              lng: geo[0],
-              label: pin.label,
-              title: info.description,
-              icon: pin.icon
-            };
+            return this._getPoint(point);
+          }));
+
+          this.mapService.drawPaths(paths.map((path) => {
+            return {points: this._getPath(path)};
           }));
         });
     } else {
       this.mapService.drawPoints([]);
     }
+  }
+
+  private _getPath(path) {
+    const geo = path.feature.geometry;
+    return geo.coordinates.map(c => ({ lat: c[1], lng: c[0] }));
+  }
+
+  private _getPoint(point) {
+    const geo = point.feature.geometry;
+    const info = point.feature.properties;
+    const pin = this._getPinInfo(info.category.id);
+    return {
+      lat: geo.coordinates[1],
+      lng: geo.coordinates[0],
+      label: pin.label,
+      title: info.description,
+      icon: pin.icon
+    };
+  }
+
+  private _getPaths(res) {
+    return res.filter(i => i.feature.geometry.type === 'LineString');
+  }
+
+  private _getPoints(res) {
+    return res.filter(i => i.feature.geometry.type === 'Point');
   }
 
   private _getTitle(value) {

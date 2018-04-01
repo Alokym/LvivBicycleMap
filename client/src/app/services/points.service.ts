@@ -48,7 +48,7 @@ export class PointsService {
   }
 
   rejectSuggestion({ id }) {
-    return this.http.put(`/api/points/suggestions/${id}/rejection`, {}).subscribe();
+    this.http.put(`/api/points/suggestions/${id}/rejection`, {}).subscribe();
     this.loadSuggestions();
   }
 
