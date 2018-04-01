@@ -1,8 +1,35 @@
-<app-map></app-map>
-<div>
-    {{suggestion.description}}
-</div>
-<div>
-    <button>Approve</button>
-    <button>Reject</button>
-</div>
+<mat-sidenav-container class="example-sidenav-container"
+                       [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <mat-sidenav #snav
+                 position="end"
+                 opened="true"
+                 [mode]="mobileQuery.matches ? 'over' : 'side'"
+                 [fixedInViewport]="mobileQuery.matches"
+                 fixedTopGap="56">
+        <mat-nav-list>
+            <mat-card>
+                <mat-card-title>
+                    <span>Suggested Place</span>
+                </mat-card-title>
+                <mat-card-content>
+                    <h6>Title</h6>
+                    <div>{{sugg.name}}</div>
+                    <h6>Label</h6>
+                    <div>{{sugg.description}}</div>
+                    <h6>Category</h6>
+                    <div>{{sugg.category}}</div>
+                </mat-card-content>
+                <mat-card-actions *ngIf="!approved">
+                    <button mat-button
+                            (click)="approve()">Approve</button>
+                    <button mat-button
+                            (click)="reject()">Reject</button>
+                </mat-card-actions>
+            </mat-card>
+        </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <app-map></app-map>
+    </mat-sidenav-content>
+</mat-sidenav-container>

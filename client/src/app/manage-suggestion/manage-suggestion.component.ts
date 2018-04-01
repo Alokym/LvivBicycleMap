@@ -4,19 +4,27 @@ import 'rxjs/add/operator/map';
 import { MapService } from '../components/map/map.service';
 import { PointsService } from '../services/points.service';
 import { ActivatedRoute } from '@angular/router';
+import { MediaMatcher } from '@angular/cdk/layout';
 
 @Component({
     selector: 'app-manage-suggestion',
     templateUrl: './manage-suggestion.component.html',
+    styles: ['./manage-suggestion.component.scss']
 })
 export class ManageSuggestionsComponent implements OnInit {
     suggestion: Observable<any>;
+    mobileQuery: MediaQueryList;
+    sugg;
+    approved = false;
 
     constructor(
         private pointsService: PointsService,
         private mapService: MapService,
-        private route: ActivatedRoute
-    ) { }
+        private route: ActivatedRoute,
+        private media: MediaMatcher
+    ) {
+        this.mobileQuery = this.media.matchMedia('(max-width: 600px)');
+    }
 
     ngOnInit() {
         this.suggestion = this.route.params.map(x => {
@@ -24,7 +32,18 @@ export class ManageSuggestionsComponent implements OnInit {
         });
 
         this.suggestion.subscribe(sugg => {
+            this.sugg = sugg;
             this.mapService.drawPoints([ sugg.point ]);
         });
+    }
+
+    approve() {
+        this.pointsService.approveSuggestion(this.sugg.id);
+        this.approved = true;
+    }
+
+    reject() {
+        this.pointsService.rejectSuggestion(this.sugg.id);
+        this.approved = true;
     }
 }
