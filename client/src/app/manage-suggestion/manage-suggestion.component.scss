@@ -1,11 +1,34 @@
-mat-sidenav {
+:host {
+  mat-sidenav {
     display: flex;
-}
+  }
 
-.mat-nav-list {
+  .mat-nav-list {
     height: 100%;
 
-    .mat-card {
-        height: 100%;
+    h5 {
+        margin-top: 0;
+        margin-bottom: 0;
     }
+
+    .data {
+      margin-left: 10px;
+    }
+
+    .mat-card {
+      height: 100%;
+
+      .approved {
+        color: green;
+      }
+
+      .rejected {
+        color: red;
+      }
+    }
+  }
+
+  mat-card-actions {
+    text-align: center;
+  }
 }

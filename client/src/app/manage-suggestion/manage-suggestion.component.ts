@@ -9,13 +9,13 @@ import { MediaMatcher } from '@angular/cdk/layout';
 @Component({
     selector: 'app-manage-suggestion',
     templateUrl: './manage-suggestion.component.html',
-    styles: ['./manage-suggestion.component.scss']
+    styleUrls: ['./manage-suggestion.component.scss']
 })
 export class ManageSuggestionsComponent implements OnInit {
     suggestion: Observable<any>;
     mobileQuery: MediaQueryList;
     sugg;
-    approved = false;
+    state = 'pending';
 
     constructor(
         private pointsService: PointsService,
@@ -38,12 +38,12 @@ export class ManageSuggestionsComponent implements OnInit {
     }
 
     approve() {
-        this.pointsService.approveSuggestion(this.sugg.id);
-        this.approved = true;
+        this.pointsService.approveSuggestion(this.sugg);
+        this.state = 'approved';
     }
 
     reject() {
-        this.pointsService.rejectSuggestion(this.sugg.id);
-        this.approved = true;
+        this.pointsService.rejectSuggestion(this.sugg);
+        this.state = 'rejected';
     }
 }
