@@ -40,6 +40,10 @@ export class CategoriesComponent implements OnInit {
   }
 
   hideSidebar() {
+    if (this.mapService.suggestedPoint !== null) {
+      this.mapService.suggestions.emit(null);
+    }
+
     this.isSuggestionSidebarShown = false;
     this.isDetailsSidebarShown = false;
   }

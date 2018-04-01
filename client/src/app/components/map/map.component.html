@@ -6,7 +6,6 @@
          [zoom]="defaults.zoom"
          [styles]="mapOptions.styles">
 
-
   <agm-marker *ngFor="let point of points;"
               [latitude]="point.lat"
               [longitude]="point.lng"
@@ -26,6 +25,11 @@
                 } : {}"
               (markerClick)="onMarkerClick(point)">
 
+  </agm-marker>
+
+  <agm-marker *ngIf="suggestedPoint"
+              [latitude]="suggestedPoint.lat"
+              [longitude]="suggestedPoint.lng">
   </agm-marker>
 
 </agm-map>
