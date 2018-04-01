@@ -33,7 +33,7 @@ export class PointsService {
       description: y.feature.properties.description,
       category: y.feature.properties.category.name,
       lng: y.feature.geometry.coordinates[ 0 ],
-      lat: y.feature.geometry.coordinates[ 0 ],
+      lat: y.feature.geometry.coordinates[ 1 ],
     })));
   }
 

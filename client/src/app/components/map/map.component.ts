@@ -47,6 +47,11 @@ export class MapComponent implements OnInit {
     this.service.onDraw.subscribe(res => {
       this.points = res;
     });
+    this.service.center.subscribe(res => {
+      this.defaults.lat = res.lat;
+      this.defaults.lng = res.lng;
+      console.log(this.defaults)
+    });
   }
 
   setLocation() {

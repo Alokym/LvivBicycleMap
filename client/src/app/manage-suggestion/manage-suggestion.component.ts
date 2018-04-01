@@ -34,6 +34,7 @@ export class ManageSuggestionsComponent implements OnInit {
         this.suggestion.subscribe(sugg => {
             this.state = 'pending';
             this.sugg = sugg;
+            this.mapService.centerMap(sugg);
             this.mapService.drawPoints([ { info: sugg.name, lng: sugg.lng, lat: sugg.lat } ]);
         });
     }
