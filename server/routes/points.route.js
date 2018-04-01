@@ -22,7 +22,7 @@ router.get('/points', async (req, res) => {
     }
 });
 
-router.get('/api/points/suggestions', async (req, res) => {
+router.get('/points/suggestions', async (req, res) => {
     try {
         const {status} = req.query;
 
@@ -36,7 +36,7 @@ router.get('/api/points/suggestions', async (req, res) => {
     }
 });
 
-router.post('/api/points/suggestions', async (req, res) => {
+router.post('/points/suggestions', async (req, res) => {
     try {
         const {body: newSuggestion} = req;
 
@@ -51,7 +51,7 @@ router.post('/api/points/suggestions', async (req, res) => {
     }
 });
 
-router.put('/api/points/suggestions/:id/approval', async (req, res) => {
+router.put('/points/suggestions/:id/approval', async (req, res) => {
     try {
         const {id} = req.params;
 
@@ -69,7 +69,7 @@ router.put('/api/points/suggestions/:id/approval', async (req, res) => {
     }
 });
 
-router.put('/api/points/suggestions/:id/rejection', async (req, res) => {
+router.put('/points/suggestions/:id/rejection', async (req, res) => {
     try {
         const {id} = req.params;
 
