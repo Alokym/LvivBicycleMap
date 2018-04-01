@@ -90,13 +90,6 @@ export class NavListComponent implements OnInit {
   }
 
   private _getCatIcon(id) {
-    // case sharing = "5abfa2fcf6c9d8220a99a9f9"
-    // case repair = "5abfa2fcf6c9d8220a99a9fa"
-    // case rental = "5abfa2fcf6c9d8220a99a9f8" // and store
-    // case parking = "5abfa2fcf6c9d8220a99a9fe"
-    // case path = "5abfa2fcf6c9d8220a99a9fd"
-    // case stops = "5abfa2fcf6c9d8220a99a9fb"
-    // case interests = "5abfa2fcf6c9d8220a99a9fc"
     return ({
       '5abfa2fcf6c9d8220a99a9f9': {name: 'directions_bike', beName: 'sharing'},
       '5abfa2fcf6c9d8220a99a9fa': {name: 'build', beName: 'repair'},
@@ -105,6 +98,7 @@ export class NavListComponent implements OnInit {
       '5abfa2fcf6c9d8220a99a9fd': {name: 'swap_calls', beName: 'path'},
       '5abfa2fcf6c9d8220a99a9fb': {name: 'mood', beName: 'stops'},
       '5abfa2fcf6c9d8220a99a9fc': {name: 'linked_camera', beName: 'interests'},
+      '5ac0e7688ab3d5c89cb117da': {name: 'local_hospital', beName: 'medical'},
     })[id];
   }
 }

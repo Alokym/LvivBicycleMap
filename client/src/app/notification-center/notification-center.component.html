@@ -5,6 +5,10 @@
              *ngFor="let suggestion of suggestions">
             <span>{{suggestion.name}}</span>
         </button>
+
+        <button mat-menu-item disabled *ngIf="suggestions.length === 0">
+            <span>No suggestions yet</span>
+        </button>
     </mat-menu>
     <button mat-icon-button class="alert-button" [matMenuTriggerFor]="appMenu">
         <mat-icon>add_alert</mat-icon>

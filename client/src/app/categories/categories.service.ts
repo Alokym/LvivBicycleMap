@@ -90,6 +90,9 @@ export class CategoriesService {
       '5abfa2fcf6c9d8220a99a9fc': {
         icon: {url: './assets/icons/map-pin-info.svg', size: 40}, label: 'I'
       },
+      '5ac0e7688ab3d5c89cb117da': {
+        icon: {url: './assets/icons/map-pin-info.svg', size: 40}, label: 'M'
+      },
     })[id] || {url: './assets/icons/map-pin.svg', size: 30};
   }
 }
