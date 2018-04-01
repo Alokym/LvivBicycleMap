@@ -5,6 +5,7 @@ import {MapPoint} from './map-point';
 export class MapService {
   public points = [];
   public selectedPoint: MapPoint;
+  public suggestedPoint: MapPoint;
   public suggestions: EventEmitter<any> = new EventEmitter();
   public details: EventEmitter<any> = new EventEmitter();
 
@@ -14,6 +15,10 @@ export class MapService {
     this.details.subscribe((point) => {
       this.selectedPoint = point;
     });
+
+    this.suggestions.subscribe((point) => {
+      this.suggestedPoint = point;
+    })
   }
 
   drawPoints(points) {

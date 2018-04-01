@@ -36,6 +36,7 @@ export class PointsService {
   }
 
   postSuggestion(place) {
+    console.log(place);
     return this.http.post('/api/points/suggestions', place).subscribe();
   }
 
