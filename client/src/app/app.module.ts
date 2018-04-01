@@ -31,6 +31,7 @@ import { CustomRouteService } from './custom-route/custom-route.service';
 import { CategoriesService } from './categories/categories.service';
 import { SuggestionsFormComponent } from './components/suggestions-form/suggestions-form.component';
 import { DetailsFormComponent } from './components/details-form/details-form.component';
+import { ManageSuggestionsComponent } from './manage-suggestion/manage-suggestion.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { DetailsFormComponent } from './components/details-form/details-form.com
     CustomRouteComponent,
     SuggestionsFormComponent,
     DetailsFormComponent,
+    ManageSuggestionsComponent,
   ],
   entryComponents: [
 
