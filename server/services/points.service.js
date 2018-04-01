@@ -3,7 +3,7 @@
 const {Types} = require('mongoose');
 const pointsModel = require('../models/geoJSON.model');
 
-async function getList({categories, lon, lat, radius = 100}) {
+async function getList({categories, lon, lat, radius = 100}, isAndroid = false) {
     const executor = (resolve, reject) => {
         const condition = {};
 
@@ -30,6 +30,18 @@ async function getList({categories, lon, lat, radius = 100}) {
             .exec((error, result) => {
                 if (error) {
                     return reject(error);
+                }
+
+                if (isAndroid) {
+                    const androidCoordinates = result.map((item) => {
+                        if (item.feature.geometry.type === 'Point') {
+                            item.feature.geometry.coordinates = [item.feature.geometry.coordinates];
+                        }
+
+                        return item
+                    });
+
+                    return resolve(androidCoordinates);
                 }
 
                 return resolve(result);

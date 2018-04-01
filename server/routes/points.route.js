@@ -8,10 +8,10 @@ const {getList} = require('../services/points.service');
 router.get('/points', async (req, res) => {
     try {
 
-        const {categories, lon, lat, radius} = req.query;
+        const {categories, lon, lat, radius, android} = req.query;
         const cats = categories ? categories.split(',') : [];
 
-        const points = await getList({categories: cats, lon, lat, radius});
+        const points = await getList({categories: cats, lon, lat, radius}, android === 'true');
 
         return res.json(points);
     } catch (error) {
