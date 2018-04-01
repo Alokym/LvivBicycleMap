@@ -25,9 +25,13 @@ export class CategoriesComponent implements OnInit {
   }
 
   //TODO: implement hiding if sidebar
-  showSuggestionSidebar() {
-    this.isSuggestionSidebarShown = true;
-    this.isDetailsSidebarShown = false;
+  showSuggestionSidebar(suggestion) {
+    if (suggestion) {
+      this.isSuggestionSidebarShown = true;
+      this.isDetailsSidebarShown = false;
+    } else {
+      this.hideSidebar();
+    }
   }
 
   showDetailsSidebar() {

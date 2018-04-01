@@ -62,11 +62,13 @@ export class MapComponent implements OnInit {
       map.styles = mapStyles;
   }
 
-  onMarkerClick(point) {
-
+  onMapClick($event) {
+    this.service.suggestions.emit($event);
+    //this.suggestedPoint = $event.coords;
   }
 
-  onMapClick() {
-    
+  onMarkerClick(point) {
+    console.log(point);
+    this.service.details.emit(point);
   }
 }
