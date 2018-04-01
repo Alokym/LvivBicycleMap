@@ -26,7 +26,7 @@ router.get('/points/suggestions', async (req, res) => {
     try {
         const {status} = req.query;
 
-        const suggestions = await suggestionsService.getList(status);
+        const suggestions = await suggestionsService.getList({status});
 
         return res.json(suggestions);
     } catch (error) {
@@ -58,7 +58,7 @@ router.put('/points/suggestions/:id/approval', async (req, res) => {
         const suggestion = await suggestionsService.approve(id);
 
         if (suggestion) {
-            await pointsService.create(suggestion);
+            await pointsService.create({feature: suggestion});
         }
 
         return res.end();
