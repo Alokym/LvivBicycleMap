@@ -27,15 +27,12 @@ export class PointsService {
   }
 
   loadSuggestions() {
-    // return this.http.get('/api/points/suggestions');
-    this.suggestions = of([
-      {
-        category: 'parking',
-        description: 'volodymyra velykogo str',
-        name: 'test name',
-        id: 10,
-      }
-    ]);
+    this.suggestions = this.http.get<Array<any>>('/api/points/suggestions').map(x => x.map(y => ({
+      name: y.feature.properties.name,
+      description: y.feature.properties.description,
+      lng: y.feature.coordinates[ 0 ],
+      lat: y.feature.coordinates[ 0 ],
+    })));
   }
 
   postSuggestion(place) {
