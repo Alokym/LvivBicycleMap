@@ -10,7 +10,7 @@ import {
 import { CustomRouteService } from '../../custom-route/custom-route.service';
 import { MapService } from '../map/map.service';
 import { CategoriesService } from '../../categories/categories.service';
-import {MapRoute} from "../map/map.route.interface";
+import { MapRoute } from '../map/map.route.interface';
 
 @Component({
   selector: 'app-nav-list',
@@ -47,7 +47,7 @@ export class NavListComponent implements OnInit {
   ngOnInit() {
     this.points = this.customRouteService.points;
     this.pointsService.loadData();
-      this.route = this.mapService.route;
+    this.route = this.mapService.route;
 
     this.pointsService.categories.subscribe((res: any) => {
       this.categories = res.map(item => {
@@ -71,12 +71,54 @@ export class NavListComponent implements OnInit {
   }
 
   addPoint() {
-    this.customRouteService.addPoint({value: {}});
+    this.customRouteService.addPoint({ value: {} });
   }
 
   search() {
-    console.log(this.points);
-    this.mapService.drawRoute(this.points[0].value.location, this.points[1].value.location);
+    const allFilled = () => this.points.every(point => !!point.value.location);
+    this.mapService.clearRoute();
+
+    if (allFilled()) {
+      console.log('render route');
+      this.mapService.drawRoute(this.points[0].value.location, this.points[1].value.location);
+    } else {
+      console.log('start geocoder');
+      const geocoder = new google.maps.Geocoder;
+      const modified = this.points.filter(point => point.value && point.value.name && !point.value.location);
+      console.log(modified);
+
+      const geocodePromise = (point) => {
+        return new Promise((resolve, reject) => {
+          geocoder.geocode({ address: point.value.name }, function (results, status) {
+            if (results && results.length) {
+              resolve({ point, result: results[0] });
+            } else {
+              reject(status);
+            }
+          });
+        });
+      };
+      Promise.all(modified.map(point => geocodePromise(point)))
+        .then((data) => data.forEach(result =>
+          Object.assign(result.point,
+            {
+              value: {
+                name: result.result.formatted_address,
+                location: {
+                  lat: result.result.geometry.location.lat(),
+                  lng: result.result.geometry.location.lng()
+                }
+              }
+            })))
+        .then(() => {
+          if (allFilled()) {
+            this.mapService.drawRoute(this.points[0].value.location, this.points[1].value.location);
+          } else {
+            console.error('please enter values');
+          }
+        })
+        .catch(e => console.error(e));
+    }
   }
 
   slide(name) {
@@ -98,13 +140,13 @@ export class NavListComponent implements OnInit {
     // case stops = "5abfa2fcf6c9d8220a99a9fb"
     // case interests = "5abfa2fcf6c9d8220a99a9fc"
     return ({
-      '5abfa2fcf6c9d8220a99a9f9': {name: 'directions_bike', beName: 'sharing'},
-      '5abfa2fcf6c9d8220a99a9fa': {name: 'build', beName: 'repair'},
-      '5abfa2fcf6c9d8220a99a9f8': {name: 'store_mall_directory', beName: 'rental'},
-      '5abfa2fcf6c9d8220a99a9fe': {name: 'local_parking', beName: 'parking'},
-      '5abfa2fcf6c9d8220a99a9fd': {name: 'swap_calls', beName: 'path'},
-      '5abfa2fcf6c9d8220a99a9fb': {name: 'mood', beName: 'stops'},
-      '5abfa2fcf6c9d8220a99a9fc': {name: 'linked_camera', beName: 'interests'},
+      '5abfa2fcf6c9d8220a99a9f9': { name: 'directions_bike', beName: 'sharing' },
+      '5abfa2fcf6c9d8220a99a9fa': { name: 'build', beName: 'repair' },
+      '5abfa2fcf6c9d8220a99a9f8': { name: 'store_mall_directory', beName: 'rental' },
+      '5abfa2fcf6c9d8220a99a9fe': { name: 'local_parking', beName: 'parking' },
+      '5abfa2fcf6c9d8220a99a9fd': { name: 'swap_calls', beName: 'path' },
+      '5abfa2fcf6c9d8220a99a9fb': { name: 'mood', beName: 'stops' },
+      '5abfa2fcf6c9d8220a99a9fc': { name: 'linked_camera', beName: 'interests' },
     })[id];
   }
 }

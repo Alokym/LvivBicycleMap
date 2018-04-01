@@ -1,5 +1,5 @@
 <mat-form-field class="input-form-field">
-  <input matInput type="text" [placeholder]="placeholder" #search/>
+  <input (change)="onChange($event)" (keyup)="onKeyPress($event)"  matInput type="text" [placeholder]="placeholder" #search/>
   <button mat-button *ngIf="point.value" matSuffix mat-icon-button aria-label="Clear" (click)="point.value=''">
     <mat-icon>close</mat-icon>
   </button>
