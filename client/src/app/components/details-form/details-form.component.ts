@@ -20,7 +20,8 @@ export class DetailsFormComponent implements OnInit {
   }
 
   updateDetails() {
-    const details = JSON.parse(this.mapService.selectedPoint.details || '');
+    const point = <any>this.mapService.selectedPoint;
+    const details = JSON.parse(point.details || '');
     this.name = details.name;
     this.description = details.desc;
   }
