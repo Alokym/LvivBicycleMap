@@ -7,14 +7,20 @@ import {MapService} from '../map/map.service';
   styleUrls: ['./details-form.component.scss']
 })
 export class DetailsFormComponent implements OnInit {
-  info = '';
+  title = '';
+  label = '';
 
   constructor(
     private mapService: MapService,
   ) {}
 
   ngOnInit() {
-    console.log(this.mapService.selectedPoint);
-    this.info = this.mapService.selectedPoint.info;
+    this.mapService.details.subscribe(this.updateDetails.bind(this));
+    this.updateDetails();
+  }
+
+  updateDetails() {
+    this.title = this.mapService.selectedPoint.title;
+    this.label = this.mapService.selectedPoint.label;
   }
 }

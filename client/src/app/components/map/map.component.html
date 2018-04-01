@@ -12,4 +12,9 @@
               [longitude]="point.lng"
               (markerClick)="onMarkerClick(point)">
   </agm-marker>
+
+  <agm-marker *ngIf="suggestedPoint"
+              [latitude]="suggestedPoint.lat"
+              [longitude]="suggestedPoint.lng">
+  </agm-marker>
 </agm-map>
