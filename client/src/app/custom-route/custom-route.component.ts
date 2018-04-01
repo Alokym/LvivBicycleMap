@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {MapService} from "../components/map/map.service";
 
 @Component({
   selector: 'app-custom-route',
@@ -6,10 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./custom-route.component.scss']
 })
 export class CustomRouteComponent implements OnInit {
-
-  constructor() { }
+  constructor(private mapService: MapService) { }
 
   ngOnInit() {
-  }
 
+  }
 }

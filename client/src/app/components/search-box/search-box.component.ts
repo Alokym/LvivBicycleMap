@@ -42,4 +42,10 @@ export class SearchBoxComponent implements OnInit, AfterViewInit {
     });
   }
 
+  onKeyPress(data) {
+    // if (data && data.target) {
+    //     this.point = { name: data.target.value }
+    // }
+  }
+
 }

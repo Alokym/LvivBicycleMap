@@ -10,6 +10,7 @@ import {
 import { CustomRouteService } from '../../custom-route/custom-route.service';
 import { MapService } from '../map/map.service';
 import { CategoriesService } from '../../categories/categories.service';
+import {MapRoute} from "../map/map.route.interface";
 
 @Component({
   selector: 'app-nav-list',
@@ -31,7 +32,7 @@ import { CategoriesService } from '../../categories/categories.service';
 export class NavListComponent implements OnInit {
   public menuState = 'left';
   public activeSide = '';
-
+  public route: MapRoute;
   public categories = [];
 
   public points = [];
@@ -46,6 +47,7 @@ export class NavListComponent implements OnInit {
   ngOnInit() {
     this.points = this.customRouteService.points;
     this.pointsService.loadData();
+      this.route = this.mapService.route;
 
     this.pointsService.categories.subscribe((res: any) => {
       this.categories = res.map(item => {
@@ -74,6 +76,7 @@ export class NavListComponent implements OnInit {
 
   search() {
     console.log(this.points);
+    this.mapService.drawRoute(this.points[0].value.location, this.points[1].value.location);
   }
 
   slide(name) {
