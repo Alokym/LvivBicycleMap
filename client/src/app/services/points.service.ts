@@ -44,7 +44,7 @@ export class PointsService {
         lng: y.feature.geometry.coordinates[ 0 ],
         lat: y.feature.geometry.coordinates[ 1 ],
       };
-    });
+    }));
   }
 
   postSuggestion(place) {
