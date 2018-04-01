@@ -1,31 +1,56 @@
 'use strict';
 
 const {Types} = require('mongoose');
-const ObjectID = require('mongodb').ObjectID;
 const pointsModel = require('../models/geoJSON.model');
 
-async function getPoints({categories}) {
+async function getList({categories, lon, lat, radius = 100}, isAndroid = false) {
     const executor = (resolve, reject) => {
         const condition = {};
 
-        if(categories.length) {
-            condition['feature.properties.category.id'] = {'$in' : categories.map((c) => new Types.ObjectId(c))};
+        if (categories.length) {
+            condition['feature.properties.category.id'] = {'$in': categories.map((c) => new Types.ObjectId(c))};
         }
 
-        const query = pointsModel.find(condition).lean();
-
-        query.exec((error, result) => {
-            if (error) {
-                return reject(error);
+        if (lon !== undefined && lat !== undefined) {
+            condition['feature.geometry'] = {
+                $near:
+                    {
+                        $geometry: {type: 'Point', coordinates: [Number(lon), Number(lat)]},
+                        $minDistance: 0,
+                        $maxDistance: Number(radius)
+                    }
             }
+        }
 
-            return resolve(result);
-        })
+        const query = pointsModel
+            .find(condition)
+            .lean();
+
+        query
+            .exec((error, result) => {
+                if (error) {
+                    return reject(error);
+                }
+
+                if (isAndroid) {
+                    const androidCoordinates = result.map((item) => {
+                        if (item.feature.geometry.type === 'Point') {
+                            item.feature.geometry.coordinates = [item.feature.geometry.coordinates];
+                        }
+
+                        return item
+                    });
+
+                    return resolve(androidCoordinates);
+                }
+
+                return resolve(result);
+            })
     };
 
     return new Promise(executor);
 }
 
 module.exports = {
-    getPoints
+    getList
 };

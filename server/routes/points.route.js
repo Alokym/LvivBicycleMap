@@ -3,15 +3,15 @@
 const express = require('express');
 const router = express.Router();
 
-const {getPoints} = require('../services/points.service');
+const {getList} = require('../services/points.service');
 
 router.get('/points', async (req, res) => {
     try {
 
-        const {categories} = req.query;
+        const {categories, lon, lat, radius, android} = req.query;
         const cats = categories ? categories.split(',') : [];
 
-        const points = await getPoints({categories: cats});
+        const points = await getList({categories: cats, lon, lat, radius}, android === 'true');
 
         return res.json(points);
     } catch (error) {

@@ -3,11 +3,11 @@
 const express = require('express');
 const router = express.Router();
 
-const categoryService = require('../services/categories.service');
+const {getList} = require('../services/categories.service');
 
 router.get('/categories', async (req, res) => {
     try {
-        const categories = await categoryService.getCategories();
+        const categories = await getList();
 
         return res.json(categories);
     } catch (error) {
@@ -17,12 +17,12 @@ router.get('/categories', async (req, res) => {
     }
 });
 
-router.get('/categories/:categoryId', (req, res) => {
-
+router.get('/categories/:id', (req, res) => {
+    res.json({message: 'Not implemented'});
 });
 
-router.get('/categories/:categoryId/points', (req, res) => {
-
+router.get('/categories/:id/points', (req, res) => {
+    res.json({message: 'Not implemented'});
 });
 
 module.exports = router;

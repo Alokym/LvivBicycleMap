@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule} from '@angular/router';
 import { RouteDefinitions } from './route-definitions';
 
 import { AgmCoreModule } from '@agm/core';
@@ -28,6 +28,9 @@ import { MapService } from './components/map/map.service';
 import { CategoriesComponent } from './categories/categories.component';
 import { CustomRouteComponent } from './custom-route/custom-route.component';
 import { CustomRouteService } from './custom-route/custom-route.service';
+import { CategoriesService } from './categories/categories.service';
+import { SuggestionsFormComponent } from './components/suggestions-form/suggestions-form.component';
+import { DetailsFormComponent } from './components/details-form/details-form.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +45,9 @@ import { CustomRouteService } from './custom-route/custom-route.service';
     FeedbackComponent,
     NotificationCenterComponent,
     CategoriesComponent,
-    CustomRouteComponent
+    CustomRouteComponent,
+    SuggestionsFormComponent,
+    DetailsFormComponent,
   ],
   entryComponents: [
 
@@ -67,7 +72,8 @@ import { CustomRouteService } from './custom-route/custom-route.service';
   providers: [
     MapService,
     PointsService,
-    CustomRouteService
+    CustomRouteService,
+    CategoriesService
   ],
   bootstrap: [AppComponent]
 })
