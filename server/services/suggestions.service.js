@@ -42,6 +42,7 @@ async function approve(id) {
             }
 
             suggestion.status = 'approved';
+            suggestion.updated = Date.now();
 
             suggestion
                 .save()
@@ -65,6 +66,7 @@ async function reject(id) {
             }
 
             suggestion.status = 'rejected';
+            suggestion.updated = Date.now();
 
             suggestion
                 .save()
