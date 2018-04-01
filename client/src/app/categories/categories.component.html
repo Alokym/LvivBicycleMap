@@ -1,13 +1,18 @@
 <mat-sidenav-container class="example-sidenav-container"
                        [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
-  <mat-sidenav #snav
-               position="end"
-               opened="true"
-               [mode]="mobileQuery.matches ? 'over' : 'side'"
-               [fixedInViewport]="mobileQuery.matches"
-               fixedTopGap="56">
+
+  <mat-sidenav-content>
+    <app-map></app-map>
+  </mat-sidenav-content>
+
+  <mat-sidenav class="categories-side-nav" #snav
+        position="end"
+        opened="true"
+        [mode]="mobileQuery.matches ? 'over' : 'side'"
+        [fixedInViewport]="mobileQuery.matches"
+        fixedTopGap="56">
     <mat-nav-list *ngIf="isSuggestionSidebarShown || isDetailsSidebarShown">
-      <div style="width:100%;text-align: right;">
+      <div class="side-nav-close" style="width:100%;text-align: right;">
         <i style="cursor:pointer; text-align: right" (click)="hideSidebar()" class="material-icons">close</i>
       </div>
 
@@ -16,7 +21,4 @@
     </mat-nav-list>
   </mat-sidenav>
 
-  <mat-sidenav-content>
-    <app-map></app-map>
-  </mat-sidenav-content>
 </mat-sidenav-container>

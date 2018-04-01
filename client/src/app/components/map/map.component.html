@@ -27,6 +27,18 @@
 
   </agm-marker>
 
+  <agm-marker *ngIf="current.lat && current.lng"
+              [latitude]="current.lat"
+              [longitude]="current.lng"
+              [title]="'{name: \'Current Position\'}'"
+              [iconUrl]="{
+                url: './assets/icons/crosshairs.svg',
+                scaledSize: {
+                  height: 30, width: 30
+                }
+              }">
+  </agm-marker>
+
   <agm-polyline *ngFor="let waypoint of waypoints;"
     [strokeColor]="'green'">
     <agm-polyline-point

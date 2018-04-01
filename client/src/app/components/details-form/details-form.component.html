@@ -1,4 +1,12 @@
 <div class="description-container">
-  <h5>{{ name }}</h5>
-  <p [innerHTML]="description"></p>
+  <mat-card>
+    <mat-card-header>
+      <!-- <div mat-card-avatar class="example-header-image"></div> -->
+      <mat-card-title>{{ name }}</mat-card-title>
+    </mat-card-header>
+    <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+    <mat-card-content>
+      <p [innerHTML]="description"></p>
+    </mat-card-content>
+  </mat-card>
 </div>

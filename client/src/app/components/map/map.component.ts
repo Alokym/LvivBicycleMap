@@ -29,6 +29,8 @@ export class MapComponent implements OnInit {
     styles: new MapSettings()
   };
 
+  current = {lat: 0, lng: 0};
+
   points = [];
   waypoints = [];
 
@@ -56,7 +58,6 @@ export class MapComponent implements OnInit {
     this.service.center.subscribe(res => {
       this.defaults.lat = res.lat;
       this.defaults.lng = res.lng;
-      console.log(this.defaults)
     });
 
     this.service.onDrawPath.subscribe(res => {
@@ -73,8 +74,10 @@ export class MapComponent implements OnInit {
   setLocation() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
-        this.marker.lat = position.coords.latitude;
-        this.marker.lng = position.coords.longitude;
+        this.current.lat = position.coords.latitude;
+        this.current.lng = position.coords.longitude;
+        this.defaults.lat = position.coords.latitude;
+        this.defaults.lng = position.coords.longitude;
       });
     }
   }
