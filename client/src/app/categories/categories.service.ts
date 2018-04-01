@@ -20,13 +20,25 @@ export class CategoriesService {
             return {
               lat: geo[1],
               lng: geo[0],
-              label: info.description,
-              title: info.name
+              label: this._getTitle(info.name),
+              title: info.description,
+              icon: this._getIcon(info.category.id)
             };
           }));
         });
     } else {
       this.mapService.drawPoints([]);
     }
+  }
+
+  private _getTitle(value) {
+    return value.split(' | ')[0].split(' - ')[0];
+  }
+
+  private _getIcon(id) {
+    return ({
+      '5abfa2fcf6c9d8220a99a9fb': './assets/icons/park.svg',
+      '5abfa2fcf6c9d8220a99a9fe': './assets/icons/parking.svg'
+    })[id];
   }
 }
