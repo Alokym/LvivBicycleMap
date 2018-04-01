@@ -18,4 +18,6 @@ const geoJSONSchema = new Schema(
     }
 );
 
+geoJSONSchema.index({'feature.geometry': '2dsphere'});
+
 module.exports = geoJSONSchema;
