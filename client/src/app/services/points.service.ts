@@ -28,8 +28,10 @@ export class PointsService {
 
   loadSuggestions() {
     this.suggestions = this.http.get<Array<any>>('/api/points/suggestions?status=pending').map(x => x.map(y => ({
+      id: y._id,
       name: y.feature.properties.name,
       description: y.feature.properties.description,
+      category: y.feature.properties.category.name,
       lng: y.feature.geometry.coordinates[ 0 ],
       lat: y.feature.geometry.coordinates[ 0 ],
     })));
@@ -41,11 +43,13 @@ export class PointsService {
   }
 
   approveSuggestion({ id }) {
-    return this.http.put(`/api/points/suggestions/${id}/approval`, {}).subscribe();
+    this.http.put(`/api/points/suggestions/${id}/approval`, {}).subscribe();
+    this.loadSuggestions();
   }
 
   rejectSuggestion({ id }) {
-    return this.http.put(`/api/points/suggestions/${id}/rejection`, {}).subscribe();
+    this.http.put(`/api/points/suggestions/${id}/rejection`, {}).subscribe();
+    this.loadSuggestions();
   }
 
   reportError({ coords, description, suggestedCoords }) {

@@ -36,8 +36,8 @@ export class SuggestionsFormComponent implements OnInit {
         geometry: {
           type: 'Point',
           coordinates: [
-            this.mapService.suggestedPoint.coords.lng,
-            this.mapService.suggestedPoint.coords.lat
+            this.mapService.suggestedPoint.lng,
+            this.mapService.suggestedPoint.lat
           ]
         },
         properties: {

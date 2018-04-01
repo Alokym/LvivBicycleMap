@@ -9,9 +9,7 @@
         <button mat-menu-item
             (click)="manageSuggestion(suggestion)"
              *ngFor="let suggestion of suggestions | async">
-            <span>{{suggestion.category}}</span>
-            <span>&nbsp;-&nbsp;</span>
-            <span>{{suggestion.description}}</span>
+            <span>{{suggestion.name}}</span>
         </button>
     </mat-menu>
     <!-- <button mat-icon-button class="alert-button" (click)="appMenu.open()">

@@ -1,11 +1,11 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import {MapPoint} from './map-point';
+import {MapPoint, SelectedPoint} from './map-point';
 
 @Injectable()
 export class MapService {
   public points = [];
   public selectedPoint: MapPoint;
-  public suggestedPoint: MapPoint;
+  public suggestedPoint: SelectedPoint;
   public suggestions: EventEmitter<any> = new EventEmitter();
   public details: EventEmitter<any> = new EventEmitter();
 
@@ -18,8 +18,8 @@ export class MapService {
     });
 
     this.suggestions.subscribe((point) => {
-      this.suggestedPoint = point;
-    })
+        this.suggestedPoint = point ? point.coords: null
+    });
   }
 
   drawPoints(points) {
