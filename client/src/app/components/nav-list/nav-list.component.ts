@@ -60,7 +60,7 @@ export class NavListComponent implements OnInit {
   }
 
   addPoint() {
-    this.customRouteService.addPoint({});
+    this.customRouteService.addPoint({value: {}});
   }
 
   search() {
