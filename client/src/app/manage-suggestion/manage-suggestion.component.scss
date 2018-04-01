@@ -1,0 +1,11 @@
+mat-sidenav {
+    display: flex;
+}
+
+.mat-nav-list {
+    height: 100%;
+
+    .mat-card {
+        height: 100%;
+    }
+}

@@ -21,7 +21,7 @@ export class PointsService {
     return this.http.get(`/api/points`, {
       params: {
         categories: categoriesCsv,
-        position
+        position,
       }
     });
   }
@@ -32,6 +32,8 @@ export class PointsService {
       {
         category: 'parking',
         description: 'volodymyra velykogo str',
+        name: 'test name',
+        id: 10,
       }
     ]);
   }
