@@ -9,7 +9,7 @@ import { MediaMatcher } from '@angular/cdk/layout';
 @Component({
     selector: 'app-manage-suggestion',
     templateUrl: './manage-suggestion.component.html',
-    styleUrls: ['./manage-suggestion.component.scss']
+    styleUrls: [ './manage-suggestion.component.scss' ]
 })
 export class ManageSuggestionsComponent implements OnInit {
     suggestion: Observable<any>;
@@ -33,7 +33,7 @@ export class ManageSuggestionsComponent implements OnInit {
 
         this.suggestion.subscribe(sugg => {
             this.sugg = sugg;
-            this.mapService.drawPoints([ sugg.point ]);
+            this.mapService.drawPoints([ { info: sugg.name, lng: sugg.lng, lat: sugg.lat } ]);
         });
     }
 
