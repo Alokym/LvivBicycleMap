@@ -35,7 +35,9 @@
     <mat-list role="list" *ngIf="activeSide === 'categories'">
       <mat-list-item role="listitem" *ngFor="let cat of categories;"
         (click)="selectCategory(cat)">
-        <mat-checkbox [(ngModel)]="cat.enabled">{{ cat.name }}</mat-checkbox>
+        <mat-icon class="{{ cat.beName }}" [ngClass]="{ 'active': cat.enabled }">{{ cat.icon }}</mat-icon>
+        <label>{{ cat.name }}</label>
+        <!-- <mat-checkbox [(ngModel)]="cat.enabled">{{ cat.name }}</mat-checkbox> -->
       </mat-list-item>
     </mat-list>
     <mat-list role="list" *ngIf="activeSide === 'custom-route'">

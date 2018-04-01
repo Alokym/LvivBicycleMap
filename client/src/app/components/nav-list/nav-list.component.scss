@@ -36,8 +36,37 @@
     }
 
     .right-menu {
-      .mat-list-item.cursor-default {
-        cursor: default;
+      .mat-list-item {
+        &.cursor-default {
+          cursor: default;
+        }
+        label {
+          cursor: pointer;
+        }
+      }
+
+      .mat-icon {
+        &.sharing.active {
+          color: #388E3C;
+        }
+        &.repair.active {
+          color: #7C4DFF;
+        }
+        &.rental.active {
+          color: #9E9D24;
+        }
+        &.parking.active {
+          color: #204a87;
+        }
+        &.path.active {
+          color: rgb(0, 172, 37);
+        }
+        &.stops.active {
+          color: #D84315;
+        }
+        &.interests.active {
+          color: #03A9F4;
+        }
       }
     }
   }
