@@ -51,6 +51,13 @@ async function getList({categories, lon, lat, radius = 100}, isAndroid = false) 
     return new Promise(executor);
 }
 
+async function create(newPoint) {
+    const point = new pointsModel(newPoint);
+
+    return point.save();
+}
+
 module.exports = {
-    getList
+    getList,
+    create
 };

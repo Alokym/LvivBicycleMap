@@ -6,13 +6,14 @@ import { of } from 'rxjs/observable/of';
 @Injectable()
 export class PointsService {
   public suggestions;
+  public categories;
 
   constructor(
     private http: HttpClient
   ) { }
 
-  getCategories() {
-    return this.http.get('/api/categories');
+  loadData() {
+    this.categories = this.http.get('/api/categories');
   }
 
   getPoints(categories, position): Observable<any> {
@@ -20,7 +21,7 @@ export class PointsService {
     return this.http.get(`/api/points`, {
       params: {
         categories: categoriesCsv,
-        position
+        position,
       }
     });
   }
@@ -31,6 +32,8 @@ export class PointsService {
       {
         category: 'parking',
         description: 'volodymyra velykogo str',
+        name: 'test name',
+        id: 10,
       }
     ]);
   }

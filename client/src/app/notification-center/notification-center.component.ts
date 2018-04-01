@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef, Component, OnInit, OnDestroy } from '@angular/core';
 import { PointsService } from '../services/points.service';
@@ -13,12 +14,17 @@ export class NotificationCenterComponent implements OnInit {
     anySuggestions: Observable<boolean>;
 
     constructor(
-        private service: PointsService
+        private service: PointsService,
+        private router: Router,
     ) { }
 
     ngOnInit() {
         this.service.loadSuggestions();
         this.suggestions = this.service.suggestions;
         this.anySuggestions = this.service.suggestions.map(x => x.length > 0);
+    }
+
+    manageSuggestion(suggestion) {
+        this.router.navigate([ 'manage-suggestions', { suggestion: JSON.stringify(suggestion) } ], { skipLocationChange: true });
     }
 }
