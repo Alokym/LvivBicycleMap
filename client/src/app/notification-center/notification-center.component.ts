@@ -8,6 +8,7 @@ import 'rxjs/add/operator/map';
 @Component({
     selector: 'app-notification-center',
     templateUrl: './notification-center.component.html',
+    styleUrls: ['./notification-center.component.scss']
 })
 export class NotificationCenterComponent implements OnInit {
     suggestions: Observable<any>;
