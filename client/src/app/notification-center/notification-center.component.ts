@@ -24,6 +24,10 @@ export class NotificationCenterComponent implements OnInit {
         this.anySuggestions = this.service.suggestions.map(x => x.length > 0);
     }
 
+    getSuggestionsAmount() {
+        return this.service.getSuggestionsAmount();
+    }
+
     manageSuggestion(suggestion) {
         this.router.navigate([ 'manage-suggestions', { suggestion: JSON.stringify(suggestion) } ], { skipLocationChange: true });
     }
