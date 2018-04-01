@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { Feedback } from '../feedback/feedback';
 
 @Injectable()
 export class FeedbackService {
@@ -13,7 +12,7 @@ export class FeedbackService {
     return this.http.get('/api/comments');
   }
 
-  postComment(comment: Feedback) {
+  postComment(comment) {
     return this.http.post('/api/comments', comment);
   }
 
