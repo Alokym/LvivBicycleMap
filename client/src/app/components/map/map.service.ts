@@ -3,7 +3,7 @@ import {MapPoint, SelectedPoint} from './map-point';
 import { Observable } from 'rxjs/Observable';
 import { MapsAPILoader } from '@agm/core';
 import { } from 'googlemaps';
-import {MapRoute} from "./map.route.interface";
+import {MapRoute} from './map.route.interface';
 
 @Injectable()
 export class MapService {
@@ -27,7 +27,7 @@ export class MapService {
     });
 
     this.suggestions.subscribe((point) => {
-        this.suggestedPoint = point ? point.coords: null
+        this.suggestedPoint = point ? point.coords : null;
     });
   }
 
@@ -37,7 +37,7 @@ export class MapService {
   }
 
   centerMap(point) {
-    this.center.next(point)
+    this.center.next(point);
   }
 
   drawPaths(points) {
@@ -68,7 +68,7 @@ export class MapService {
         this.directionsDisplay.setMap(this.map);
 
         this.directionsService.route(request, (result, status) => {
-          if (status == google.maps.DirectionsStatus.OK) {
+          if (status === google.maps.DirectionsStatus.OK) {
             this.directionsDisplay.setDirections(result);
             this.route.distance = this.computeTotalDistance(result);
           }
@@ -77,7 +77,9 @@ export class MapService {
   }
 
   clearRoute() {
-    if (this.directionsDisplay) this.directionsDisplay.setMap(null);
+    if (this.directionsDisplay) {
+      this.directionsDisplay.setMap(null);
+    }
     this.route.distance = null;
   }
 
