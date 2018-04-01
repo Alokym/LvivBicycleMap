@@ -27,15 +27,16 @@ export class PointsService {
   }
 
   loadSuggestions() {
-    this.suggestions = this.http.get<Array<any>>('/api/points/suggestions').map(x => x.map(y => ({
+    this.suggestions = this.http.get<Array<any>>('/api/points/suggestions?status=pending').map(x => x.map(y => ({
       name: y.feature.properties.name,
       description: y.feature.properties.description,
-      lng: y.feature.coordinates[ 0 ],
-      lat: y.feature.coordinates[ 0 ],
+      lng: y.feature.geometry.coordinates[ 0 ],
+      lat: y.feature.geometry.coordinates[ 0 ],
     })));
   }
 
   postSuggestion(place) {
+    console.log(place);
     return this.http.post('/api/points/suggestions', place).subscribe();
   }
 

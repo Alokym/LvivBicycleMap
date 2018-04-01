@@ -7,9 +7,9 @@
     </mat-form-field>
 
     <mat-form-field>
-      <mat-select placeholder="Category" [(ngModel)]="suggestion.category" name="category" required>
-        <mat-option *ngFor="let cat of categories" [value]="cat">
-          {{ cat }}
+      <mat-select placeholder="Category" [(ngModel)]="suggestion.category" name="category.id" required>
+        <mat-option *ngFor="let cat of categories" [value]="cat._id">
+          {{ cat.name }}
         </mat-option>
       </mat-select>
     </mat-form-field>

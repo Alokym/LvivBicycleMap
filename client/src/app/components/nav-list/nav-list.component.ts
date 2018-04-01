@@ -48,7 +48,15 @@ export class NavListComponent implements OnInit {
     this.pointsService.loadData();
 
     this.pointsService.categories.subscribe((res: any) => {
-      this.categories = res.map(item => ({_id: item._id, name: item.name.split('|')[0]}));
+      this.categories = res.map(item => {
+        const icon = this._getCatIcon(item._id);
+        return {
+          _id: item._id,
+          name: item.name.split('|')[0],
+          beName: icon.beName,
+          icon: icon.name
+        };
+      });
     });
   }
 
@@ -76,5 +84,24 @@ export class NavListComponent implements OnInit {
   slideBack() {
     this.activeSide = '';
     this.menuState = 'left';
+  }
+
+  private _getCatIcon(id) {
+    // case sharing = "5abfa2fcf6c9d8220a99a9f9"
+    // case repair = "5abfa2fcf6c9d8220a99a9fa"
+    // case rental = "5abfa2fcf6c9d8220a99a9f8" // and store
+    // case parking = "5abfa2fcf6c9d8220a99a9fe"
+    // case path = "5abfa2fcf6c9d8220a99a9fd"
+    // case stops = "5abfa2fcf6c9d8220a99a9fb"
+    // case interests = "5abfa2fcf6c9d8220a99a9fc"
+    return ({
+      '5abfa2fcf6c9d8220a99a9f9': {name: 'directions_bike', beName: 'sharing'},
+      '5abfa2fcf6c9d8220a99a9fa': {name: 'build', beName: 'repair'},
+      '5abfa2fcf6c9d8220a99a9f8': {name: 'store_mall_directory', beName: 'rental'},
+      '5abfa2fcf6c9d8220a99a9fe': {name: 'local_parking', beName: 'parking'},
+      '5abfa2fcf6c9d8220a99a9fd': {name: 'swap_calls', beName: 'path'},
+      '5abfa2fcf6c9d8220a99a9fb': {name: 'mood', beName: 'stops'},
+      '5abfa2fcf6c9d8220a99a9fc': {name: 'linked_camera', beName: 'interests'},
+    })[id];
   }
 }
