@@ -35,7 +35,7 @@ export class MapComponent implements OnInit {
     private changeDetectorRef: ChangeDetectorRef,
     private media: MediaMatcher,
     private service: MapService,
-    private suggestedPoint: MapPoint,
+    //private suggestedPoint: MapPoint,
   ) {
     this.mobileQuery = this.media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => this.changeDetectorRef.detectChanges();
