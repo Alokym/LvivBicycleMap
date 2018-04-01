@@ -1,13 +1,23 @@
 <div class="suggestion-container">
-  <span>Your suggestion:</span>
+  <form action="" (ngSubmit)="onSubmit()" #suggestionForm="ngForm" >
+    <span>Your suggestion:</span>
 
-  <mat-form-field>
-    <input matInput placeholder="Name">
-  </mat-form-field>
+    <mat-form-field >
+      <input matInput placeholder="Title" [(ngModel)]="suggestion.title" name="title" required>
+    </mat-form-field>
 
-  <mat-form-field>
-    <textarea matInput placeholder="Description"></textarea>
-  </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Category" [(ngModel)]="suggestion.category" name="category" required>
+        <mat-option *ngFor="let cat of categories" [value]="cat">
+          {{ cat }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
-  <button mat-button>Submit</button>
+    <mat-form-field>
+      <textarea matInput placeholder="Description" [(ngModel)]="suggestion.description" required name="description"></textarea>
+    </mat-form-field>
+
+    <button mat-button type="submit">Submit</button>
+  </form>
 </div>

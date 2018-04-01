@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {PointsService} from "../../services/points.service";
+import {MapPointSuggestion} from './map-point-suggestion';
 
 @Component({
   selector: 'app-suggestions-form',
@@ -8,13 +9,22 @@ import {PointsService} from "../../services/points.service";
 })
 export class SuggestionsFormComponent implements OnInit {
 
-  public id: number;
+  public categories: Array<string> = ['asdasd', 'rwerwer'];
+  public suggestion: MapPointSuggestion = {title: '', category: '', description: ''};
 
   constructor() {
-    //PointsService.postSuggestion
+
   }
 
   ngOnInit() {
+
   }
 
+  onSubmit() {
+    if (!this.suggestion.title || !this.suggestion.category || !this.suggestion.description) {
+      return;
+    }
+
+
+  }
 }
