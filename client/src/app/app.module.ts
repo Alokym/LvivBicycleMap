@@ -45,7 +45,7 @@ import { DetailsFormComponent } from './components/details-form/details-form.com
     CategoriesComponent,
     CustomRouteComponent,
     SuggestionsFormComponent,
-    DetailsFormComponent
+    DetailsFormComponent,
   ],
   entryComponents: [
 
