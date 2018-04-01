@@ -10,6 +10,7 @@ export class MapService {
   public details: EventEmitter<any> = new EventEmitter();
 
   public onDraw = new EventEmitter();
+  public onDrawPath = new EventEmitter();
 
   constructor() {
     this.details.subscribe((point) => {
@@ -24,5 +25,9 @@ export class MapService {
   drawPoints(points) {
     this.points = points;
     this.onDraw.next(points);
+  }
+
+  drawPaths(points) {
+    this.onDrawPath.emit(points);
   }
 }

@@ -65,7 +65,7 @@ export class NavListComponent implements OnInit {
 
     const categories = this.categories.filter(category => category.enabled);
 
-    this.categoriesService.drawCategoris(categories);
+    this.categoriesService.drawCategories(categories);
   }
 
   addPoint() {

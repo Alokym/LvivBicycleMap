@@ -28,4 +28,12 @@
 
   </agm-marker>
 
+  <agm-polyline *ngFor="let waypoint of waypoints;"
+    [strokeColor]="'green'">
+    <agm-polyline-point
+      *ngFor="let point of waypoint.points;"
+      [latitude]="point.lat"
+      [longitude]="point.lng"></agm-polyline-point>
+  </agm-polyline>
+
 </agm-map>

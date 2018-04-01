@@ -28,6 +28,7 @@ export class MapComponent implements OnInit {
   };
 
   points = [];
+  waypoints = [];
 
   private _mobileQueryListener: () => void;
 
@@ -46,6 +47,10 @@ export class MapComponent implements OnInit {
     this.points = this.service.points;
     this.service.onDraw.subscribe(res => {
       this.points = res;
+    });
+
+    this.service.onDrawPath.subscribe(res => {
+      this.waypoints = res;
     });
   }
 
