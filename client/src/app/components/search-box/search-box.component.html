@@ -1,0 +1,6 @@
+<mat-form-field class="input-form-field">
+  <input (keypress)="onKeyPress($event)" matInput type="text" [placeholder]="placeholder" [(ngModel)]="point.value" #search/>
+  <button mat-button *ngIf="point.value" matSuffix mat-icon-button aria-label="Clear" (click)="point.value=''">
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-form-field>

@@ -10,6 +10,7 @@ import {
 import { CustomRouteService } from '../../custom-route/custom-route.service';
 import { MapService } from '../map/map.service';
 import { CategoriesService } from '../../categories/categories.service';
+import {MapRoute} from "../map/map.route.interface";
 
 @Component({
   selector: 'app-nav-list',
@@ -31,7 +32,7 @@ import { CategoriesService } from '../../categories/categories.service';
 export class NavListComponent implements OnInit {
   public menuState = 'left';
   public activeSide = '';
-
+  public route: MapRoute;
   public categories = [];
 
   public points = [];
@@ -45,6 +46,7 @@ export class NavListComponent implements OnInit {
 
   ngOnInit() {
     this.points = this.customRouteService.points;
+    this.route = this.mapService.route;
 
     this.pointsService.getCategories().subscribe((res: any) => {
       this.categories = res.map(item => ({_id: item._id, name: item.name.split('|')[0]}));
@@ -63,14 +65,14 @@ export class NavListComponent implements OnInit {
     this.customRouteService.addPoint({});
   }
 
-  buildRoute() {
-    this.mapService.drawRoute({
-      lat: 49.7996413,
-      lng: 24.0158005
-    }, {
-      lat: 49.7956371,
-      lng: 24.0612462
-    });
+  search() {
+    console.log(this.points);
+    this.mapService.drawRoute(this.points[0].value.location, this.points[1].value.location);
+    // if (this.points[0].value.location && this.points[1].value.location) {
+    // } else {
+    //     this.mapService.clearRoute();
+    //   // geocode by name
+    // }
   }
 
   slide(name) {

@@ -42,19 +42,15 @@
 
     <mat-list role="list" *ngIf="activeSide === 'custom-route'">
       <mat-list-item role="listitem" class="cursor-default" *ngFor="let point of points; let i = index;">
-        <mat-form-field class="input-form-field">
-          <input matInput type="text" placeholder="{{ i === 0 ? 'From' : i === 1 ? 'To' : 'Then to' }}" [(ngModel)]="point.value"/>
-          <button mat-button *ngIf="point.value" matSuffix mat-icon-button aria-label="Clear" (click)="point.value=''">
-            <mat-icon>close</mat-icon>
-          </button>
-        </mat-form-field>
+        <app-search-box [(point)]="point.value" [placeholder]="i === 0 ? 'From' : i === 1 ? 'To' : 'Then to'"></app-search-box>
       </mat-list-item>
     </mat-list>
     <div style="text-align: center" *ngIf="activeSide === 'custom-route'">
-      <button mat-raised-button color="primary" (click)="addPoint()">Add a stop</button>
-      <button mat-raised-button color="primary" (click)="buildRoute()">Build route</button>
-      <div *ngIf="route">
-        <p>Distance: {{route.distance}}</p>
+      <div style="text-align: center">
+        <button mat-raised-button color="primary" (click)="search()">Search</button>
+      </div>
+      <div *ngIf="route && route.distance">
+        <p>Distance: {{route.distance}}km</p>
       </div>
     </div>
   </div>

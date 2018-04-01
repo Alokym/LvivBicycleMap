@@ -5,6 +5,7 @@ import { mapStyles } from './map.styles';
 
 import { MapSettings } from './map.settings';
 import {MapPoint} from './map-point';
+import {MapRoute} from "./map.route.interface";
 
 @Component({
   selector: 'app-map',
@@ -28,14 +29,14 @@ export class MapComponent implements OnInit {
   };
 
   points = [];
-  map = null;
 
   private _mobileQueryListener: () => void;
+  private route: MapRoute;
 
   constructor(
     private changeDetectorRef: ChangeDetectorRef,
     private media: MediaMatcher,
-    private service: MapService,
+    private service: MapService
     //private suggestedPoint: MapPoint,
   ) {
     this.mobileQuery = this.media.matchMedia('(max-width: 600px)');
@@ -48,6 +49,7 @@ export class MapComponent implements OnInit {
     this.service.onDraw.subscribe(res => {
       this.points = res;
     });
+    this.route = this.service.route;
   }
 
   setLocation() {
@@ -60,7 +62,6 @@ export class MapComponent implements OnInit {
   }
 
   onMapReady(map) {
-      this.map = map;
       this.service.map = map;
   }
 
