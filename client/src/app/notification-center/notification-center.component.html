@@ -1,10 +1,4 @@
 <div class="notification-center" *ngIf="anySuggestions | async">
-    <button mat-button
-            class="alert-button"
-            [matMenuTriggerFor]="appMenu">
-        <mat-icon>add_alert</mat-icon>
-    </button>
-    
     <mat-menu #appMenu="matMenu">
         <button mat-menu-item
             (click)="manageSuggestion(suggestion)"
@@ -12,7 +6,7 @@
             <span>{{suggestion.name}}</span>
         </button>
     </mat-menu>
-    <!-- <button mat-icon-button class="alert-button" (click)="appMenu.open()">
+    <button mat-icon-button class="alert-button" [matMenuTriggerFor]="appMenu">
         <mat-icon>add_alert</mat-icon>
-    </button> -->
+    </button>
 </div>
